@@ -24,23 +24,27 @@
     <main class="hero">
         <!-- Home Section -->
         <section id="home" class="profile-card">
-            <img src="assets/images/nivlek1.jpg" alt="Profile Picture" class="profile-pic">
+            <img src="assets/images/nivlek4.jpg" alt="Profile Picture" class="profile-pic">
             <div class="bio">
                 <h1>UI/UX Designer & Web Developer</h1>
                 <p class="highlight">IT Student | University of Embu</p>
                 <p class="highlight">Creating digital experiences that matter</p><BR>
-                <a href="#contact" class="btn">Contact</a><br>
-                <br><a href="assets/Kelvin_CV.pdf" download class="btn-d">My CV</a>
+                <a href="#contact" class="btn">Contact Me</a><br>
+                <br><a href="assets/Kelvin_CV.pdf" download class="btn-d">Download CV</a>
             </div>
+            <img src="assets/images/nivlek3.jpg" alt="Profile Picture" class="profile-pic">
         </section>
 
         <!-- About Section -->
         <section id="about" class="about-section">
-            <h2 class="highlight2">About Me</h2>
+            <h2 class="highlight0">About Me</h2>
             <p class="description">
-                    Passionate IT student specializing in web development and UI/UX design. 
-                    Currently pursuing my degree at the University of Embu while working on 
-                    real-world projects to enhance my technical skills.
+                Greetings! I'm Kelvin Kariuki, a passionate and dedicated IT student with a strong desire to make a meaningful impact in the world of technology. 
+                My journey in the IT team has been an exciting one, driven by an insatiable curiosity and a thirst for knowledge. 
+                From coding and programming to network administration and cybersecurity, I have immersed myself in a wide range of IT disciplines, always striving for excellence.
+                 I am a firm believer in the power of technology to transform businesses and improve lives. 
+                 With a strong foundation in IT and a commitment to lifelong learning, I am excited to contribute my skills, creativity, and problem-solving abilities to the ever-evolving world of technology.
+                
                 </p>
             <div class="tab-container">
                 <div class="tab active" onclick="showTab('personal')">Personal</div>
@@ -90,28 +94,31 @@
 
         <!-- Projects Section -->
         <section id="projects" class="projects-section">
-            <h2 class="highlight1">Featured Projects</h2>
+            <h2 class="highlight0">Featured Projects</h2>
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <img src="images/profile (2).png" alt="E-Commerce Platform" class="project-image">
+                    <img src="assets/images/Ecommerce.png" alt="E-Commerce Platform" class="project-image">
                     <h3>E-Commerce Platform</h3>
                     <p>Shoe shopping platform with payment integration</p>
                     <div class="tech-tags">
-                        <span class="highlight">react</span>
-                        <span class="highlight">Node.js</span>
-                        <span class="highlight">MongoDB</span><br>
-                        <tag class ="link">Visit the website</tag>
+                        <span class="highlight">HTML</span>
+                        <span class="highlight">CSS</span>
+                        <span class="highlight">Javascript</span><br>
+                        <a href="https://nivlekieshoeshop.netlify.app/" target="_blank" class="project-link">Visit →</a>
                     </div>
                 </div>
+               
+            
+               
                 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <img src="images/profile (3).png" alt="Task Management App" class="project-image">
+                    <img src="assets/images/Mobileapp.png" alt="Rent Management App" class="project-image">
                     <h3>Rent Management App</h3>
                     <p>TenantFlex mobile application </p>
                     <div class="tech-tags">
-                        <span class="highlight">Vue.js</span>
+                        <span class="highlight">Java</span>
                         <span class="highlight">Firebase</span>
 
                     </div>
@@ -119,12 +126,13 @@
 
                 <!-- Project 3 -->
                 <div class="project-card">
-                    <img src="images/profile (1).png" alt="Portfolio Website" class="project-image">
+                    <img src="assets/images/portofolio.png" alt="Portfolio Website" class="project-image">
                     <h3>Portfolio Website</h3>
                     <p>Responsive portfolio with dark theme</p>
                     <div class="tech-tags">
                         <span class="highlight">HTML5</span>
-                        <span class="highlight">CSS3</span>
+                        <span class="highlight">CSS3</span><br>
+                        <a href="https://myportofolio_kelvin.netlify.app/" target="_blank" class="project-link">Visit→</a>
                     </div>
                 </div>
 
@@ -132,27 +140,61 @@
             </div>
         </section>
 
-        <!-- Rating Section -->
-        <section class="rating-section">
-            <h2 class="highlight">Rate My Work</h2>
-            <div class="like-system">
-                <button class="like-btn" onclick="handleLike()">
-                    <i class="fas fa-heart"></i>
-                    <span id="likeCount">0</span>
-                </button>
-                <div class="star-rating">
-                    <span class="star" onclick="rate(1)">★</span>
-                    <span class="star" onclick="rate(2)">★</span>
-                    <span class="star" onclick="rate(3)">★</span>
-                    <span class="star" onclick="rate(4)">★</span>
-                    <span class="star" onclick="rate(5)">★</span>
-                </div>
+     <!-- Rating Section -->
+<section class="rating-section">
+    <h2 class="highlight">Rate My Work</h2>
+    <div class="like-system">
+        <button class="like-btn" onclick="handleLike()">
+            <i class="fas fa-heart"></i>
+            <span id="likeCount">0</span>
+        </button>
+        <form id="ratingForm" action="https://formspree.io/f/mzzbbpzq" method="POST">
+            <input type="hidden" name="rating" id="ratingValue" value="">
+            <input type="hidden" name="page" value="Portfolio Rating">
+            <div class="star-rating">
+                <span class="star" onclick="rate(1)">★</span>
+                <span class="star" onclick="rate(2)">★</span>
+                <span class="star" onclick="rate(3)">★</span>
+                <span class="star" onclick="rate(4)">★</span>
+                <span class="star" onclick="rate(5)">★</span>
             </div>
-        </section>
+            <button type="submit" class="btn" style="display:none;" id="submitRating">Submit Rating</button>
+        </form>
+    </div>
+</section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact-form">
-            <h2 class="highlight">Contact Me</h2>
+      
+<div class="contact-info">
+    <div class="contact-method">
+        <i class="fas fa-phone-alt neon-icon"></i>
+        <div>
+            <h3 class="highlight1">Phone</h3>
+            <p>+254 717 328 354</p>
+            <p>+254 769 791 611</p> 
+        </div>
+    </div>
+    
+    <div class="contact-method">
+        <i class="fas fa-envelope neon-icon"></i>
+        <div>
+            <h3 class="highlight1">Email</h3>
+            <p>kelvinkk24816@gmail.com</p>
+        </div>
+    </div>
+    
+    <div class="contact-method">
+        <i class="fas fa-clock neon-icon"></i>
+        <div>
+            <h3 class="highlight1">Availability</h3>
+            <p>Mon-Fri: 6am-7pm</p>
+            <p>Weekends: Limited</p>
+        </div>
+    </div>
+</div>
+
+        <section id="contact"class="contact-form">
+            <h2 class="highlight0">Contact Me</h2>
             <form action="https://formspree.io/f/mzzbbpzq" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" name="name" id="name" required>
@@ -165,7 +207,7 @@
               
                 <button type="submit">Send Message</button>
               </form>
-              <!-- Add this inside your contact section -->
+              
 <div class="social-links">
     <a href="https://wa.me/+254717328354" target="_blank" class="social-icon">
         <i class="fab fa-whatsapp"></i>
@@ -199,13 +241,44 @@
         }
 
         // Rating System
-        function rate(rating) {
-            const stars = document.querySelectorAll('.star');
-            stars.forEach((star, index) => {
-                star.classList.toggle('active', index < rating);
-            });
-            alert(`Thanks for your ${rating}-star rating!`);
+let currentRating = 0;
+
+function rate(rating) {
+    currentRating = rating;
+    const stars = document.querySelectorAll('.star');
+    stars.forEach((star, index) => {
+        star.classList.toggle('active', index < rating);
+    });
+    
+    // Set the rating value and submit
+    document.getElementById('ratingValue').value = rating;
+    document.getElementById('submitRating').click();
+}
+
+// Form submission handler
+document.getElementById('ratingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
         }
+    })
+    .then(response => {
+        if (response.ok) {
+            alert(`Thanks for your ${currentRating}-star rating!`);
+        } else {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 
         // Tab System
         function showTab(tabId) {
