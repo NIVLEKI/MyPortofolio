@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kelvin Kariuki | Digital Portfolio</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- Link to your external CSS file -->
+        <link rel="stylesheet" href="assets/style.css">
+    </head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">KARIUKI KELVIN WACHIRA</div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <!-- Home Section -->
+        <section id="home" class="profile-card">
+            <img src="assets/images/nivlek1.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="bio">
+                <h1>UI/UX Designer & Web Developer</h1>
+                <p class="highlight">IT Student | University of Embu</p>
+                <p class="highlight">Creating digital experiences that matter</p><BR>
+                <a href="#contact" class="btn">Contact</a><br>
+                <br><a href="assets/Kelvin_CV.pdf" download class="btn-d">My CV</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <h2 class="highlight2">About Me</h2>
+            <p class="description">
+                    Passionate IT student specializing in web development and UI/UX design. 
+                    Currently pursuing my degree at the University of Embu while working on 
+                    real-world projects to enhance my technical skills.
+                </p>
+            <div class="tab-container">
+                <div class="tab active" onclick="showTab('personal')">Personal</div>
+                <div class="tab" onclick="showTab('skills')">Skills</div>
+                <div class="tab" onclick="showTab('experience')">Experience</div>
+                <div class="tab" onclick="showTab('education')">Education</div>
+            </div>
+
+            <div id="personal" class="tab-content active">
+                <h3 class="highlight1">Personal Details</h3>
+                <ul>
+                    <li><span class="highlight">Name:</span> Kariuki Kelvin Wachira</li>
+                    <li><span class="highlight">Born:</span> 26/5/2003</li>
+                    <li><span class="highlight">Location:</span> Nairobi, Kenya</li>
+                    <li><span class="highlight">Status:</span> Single</li>
+                </ul>
+            </div>
+
+            <div id="skills" class="tab-content">
+                <h3 class="highlight1">Technical Skills</h3>
+                <ul>
+                    <li>UI/UX Design</li>
+                    <li>Web Development (HTML5, CSS3, JavaScript)</li>
+                    <li>Mobile App Development</li>
+                    <li>Network Administration</li>
+                </ul>
+            </div>
+
+            <div id="experience" class="tab-content">
+                <h3 class="highlight1">Professional Experience</h3>
+                <ul>
+                    <li>2023-Current: Freelance Developer</li>
+                    <li>2022: University Projects</li>
+                    <li>2021: IT Volunteering</li>
+                </ul>
+            </div>
+
+            <div id="education" class="tab-content">
+                <h3 class="highlight1">Education</h3>
+                <ul>
+                    <li>BSc. IT - University of Embu (2022-2026)</li>
+                    <li>Gathera High School (2018-2021)</li>
+                    <li>Muirungi Primary School (2010-2017)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <h2 class="highlight1">Featured Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <img src="images/profile (2).png" alt="E-Commerce Platform" class="project-image">
+                    <h3>E-Commerce Platform</h3>
+                    <p>Shoe shopping platform with payment integration</p>
+                    <div class="tech-tags">
+                        <span class="highlight">react</span>
+                        <span class="highlight">Node.js</span>
+                        <span class="highlight">MongoDB</span><br>
+                        <tag class ="link">Visit the website</tag>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="images/profile (3).png" alt="Task Management App" class="project-image">
+                    <h3>Rent Management App</h3>
+                    <p>TenantFlex mobile application </p>
+                    <div class="tech-tags">
+                        <span class="highlight">Vue.js</span>
+                        <span class="highlight">Firebase</span>
+
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <img src="images/profile (1).png" alt="Portfolio Website" class="project-image">
+                    <h3>Portfolio Website</h3>
+                    <p>Responsive portfolio with dark theme</p>
+                    <div class="tech-tags">
+                        <span class="highlight">HTML5</span>
+                        <span class="highlight">CSS3</span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!-- Rating Section -->
+        <section class="rating-section">
+            <h2 class="highlight">Rate My Work</h2>
+            <div class="like-system">
+                <button class="like-btn" onclick="handleLike()">
+                    <i class="fas fa-heart"></i>
+                    <span id="likeCount">0</span>
+                </button>
+                <div class="star-rating">
+                    <span class="star" onclick="rate(1)">★</span>
+                    <span class="star" onclick="rate(2)">★</span>
+                    <span class="star" onclick="rate(3)">★</span>
+                    <span class="star" onclick="rate(4)">★</span>
+                    <span class="star" onclick="rate(5)">★</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-form">
+            <h2 class="highlight">Contact Me</h2>
+            <form action="https://formspree.io/f/mzzbbpzq" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+              
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" required></textarea>
+              
+                <button type="submit">Send Message</button>
+              </form>
+              <!-- Add this inside your contact section -->
+<div class="social-links">
+    <a href="https://wa.me/+254717328354" target="_blank" class="social-icon">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://instagram.com/karisnivlek" target="_blank" class="social-icon">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://discord.com/users/1333756609125679144" target="_blank" class="social-icon">
+        <i class="fab fa-discord"></i>
+    </a>
+    <a href="https://github.com/NIVLEKI" target="_blank" class="social-icon">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=kelvin-kariuki-9644a5333 " target="_blank" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+    </a>
+</div>
+        </section>
+    </main>
+
+    <script>
+        // Like System
+        let likes = 0;
+        function handleLike() {
+            likes++;
+            document.getElementById('likeCount').textContent = likes;
+            document.querySelector('.like-btn').classList.add('liked');
+            setTimeout(() => {
+                document.querySelector('.like-btn').classList.remove('liked');
+            }, 300);
+        }
+
+        // Rating System
+        function rate(rating) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                star.classList.toggle('active', index < rating);
+            });
+            alert(`Thanks for your ${rating}-star rating!`);
+        }
+
+        // Tab System
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Scroll Animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.project-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
