@@ -48,7 +48,6 @@
             color: var(--text-color);
             background-color: var(--bg-color);
             transition: var(--transition);
-            overflow-x: hidden;
         }
 
         a {
@@ -64,7 +63,6 @@
         img {
             max-width: 100%;
             height: auto;
-            display: block;
         }
 
         .container {
@@ -84,7 +82,6 @@
             transition: var(--transition);
             border: none;
             cursor: pointer;
-            text-align: center;
         }
 
         .btn:hover {
@@ -209,7 +206,6 @@
             border: none;
             font-size: 24px;
             color: var(--primary-color);
-            z-index: 1001;
         }
 
         /* Hero Section */
@@ -223,13 +219,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
         }
 
         .hero-text {
             flex: 1;
             padding-right: 30px;
-            min-width: 300px;
         }
 
         .hero-text h1 {
@@ -244,34 +238,22 @@
             margin-bottom: 30px;
         }
 
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
         .hero-buttons .btn {
-            margin-right: 0;
-            flex: 1;
-            min-width: 150px;
+            margin-right: 15px;
         }
 
         .hero-image {
             flex: 1;
             text-align: center;
-            min-width: 300px;
         }
 
         .profile-image {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            aspect-ratio: 1/1;
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--primary-color);
             box-shadow: var(--shadow);
-            margin: 0 auto;
         }
 
         /* About Section */
@@ -279,12 +261,10 @@
             display: flex;
             align-items: center;
             gap: 50px;
-            flex-wrap: wrap;
         }
 
         .about-image {
             flex: 1;
-            min-width: 300px;
         }
 
         .about-image img {
@@ -297,7 +277,6 @@
 
         .about-text {
             flex: 1;
-            min-width: 300px;
         }
 
         .about-text h3 {
@@ -426,7 +405,6 @@
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 20px;
-            gap: 10px;
         }
 
         .project-tech span {
@@ -435,18 +413,14 @@
             padding: 5px 10px;
             border-radius: 20px;
             font-size: 12px;
+            margin-right: 10px;
+            margin-bottom: 10px;
             border: 1px solid var(--border-color);
         }
 
         .project-buttons {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .project-buttons .btn {
-            flex: 1;
-            min-width: 120px;
         }
 
         /* Experience Section */
@@ -563,8 +537,6 @@
         .social-links {
             display: flex;
             margin-top: 30px;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .social-links a {
@@ -576,6 +548,7 @@
             background: var(--primary-color);
             color: var(--bg-color);
             border-radius: 50%;
+            margin-right: 15px;
             transition: var(--transition);
         }
 
@@ -620,7 +593,6 @@
             font-weight: 800;
             margin-bottom: 20px;
             color: var(--bg-color);
-            text-align: center;
         }
 
         .footer-logo span {
@@ -630,13 +602,11 @@
         .footer-links {
             display: flex;
             margin-bottom: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
         }
 
         .footer-links a {
             color: var(--bg-color);
+            margin: 0 15px;
             transition: var(--transition);
         }
 
@@ -650,12 +620,6 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .hero-text h1 {
-                font-size: 42px;
-            }
-        }
-
         @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
@@ -670,30 +634,24 @@
             .about-content {
                 flex-direction: column;
             }
-            
-            .section-title h2 {
-                font-size: 32px;
-            }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
                 background: var(--bg-color);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 transition: all 0.5s ease;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                z-index: 999;
             }
             
             .nav-links.active {
-                right: 0;
+                left: 0;
             }
             
             .nav-links li {
@@ -702,7 +660,10 @@
             
             .hamburger {
                 display: block;
-                z-index: 1000;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
             }
             
             .hero-text h1 {
@@ -713,14 +674,6 @@
             .blog-container {
                 grid-template-columns: 1fr;
             }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .hero {
-                padding-top: 120px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -728,66 +681,24 @@
                 font-size: 28px;
             }
             
-            .hero-text p {
-                font-size: 16px;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-            }
-            
             .hero-buttons .btn {
-                width: 100%;
                 margin-bottom: 15px;
+                display: block;
+                width: 100%;
             }
             
             .hero-buttons .btn:last-child {
                 margin-bottom: 0;
             }
             
+            .section {
+                padding: 60px 0;
+            }
+            
             .skill-item,
             .project-card,
             .blog-card {
                 padding: 20px;
-            }
-            
-            .project-buttons {
-                flex-direction: column;
-            }
-            
-            .section-title h2 {
-                font-size: 28px;
-            }
-            
-            .profile-image {
-                max-width: 250px;
-            }
-            
-            .about-image img {
-                height: 300px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .hero-text h1 {
-                font-size: 24px;
-            }
-            
-            .section-title h2 {
-                font-size: 24px;
-            }
-            
-            .profile-image {
-                max-width: 200px;
-            }
-            
-            .about-image img {
-                height: 250px;
-            }
-            
-            .project-tech span {
-                font-size: 10px;
-                padding: 4px 8px;
             }
         }
     </style>
@@ -835,7 +746,7 @@
             </div>
             <div class="hero-image">
                 <!-- Replace with your image path -->
-                <img src="assets/images/WALL 5_1.jpg" alt="Kelvin Kariuki" class="profile-image" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'300\' height=\'300\' viewBox=\'0 0 300 300\'%3E%3Crect width=\'300\' height=\'300\' fill=\'%23f0f0f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'24\' fill=\'%23999\'%3EProfile Image%3C/text%3E%3C/svg%3E'">
+                <img src="/assets/images/WALL 5_1.jpg" alt="Kelvin Kariuki" class="profile-image">
             </div>
         </div>
     </section>
@@ -850,7 +761,7 @@
             <div class="about-content">
                 <div class="about-image">
                     <!-- Replace with your image path -->
-                    <img src="assets/images/about.jpg" alt="Kelvin Kariuki" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'%3E%3Crect width=\'400\' height=\'400\' fill=\'%23f0f0f0\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'sans-serif\' font-size=\'24\' fill=\'%23999\'%3EAbout Image%3C/text%3E%3C/svg%3E'">
+                    <img src="/assets/images/about.jpg" alt="Kelvin Kariuki" class="profile-image">
                 </div>
                 
                 <div class="about-text">
@@ -1153,7 +1064,7 @@
                     
                     <div class="social-links">
                         <a href="https://github.com/NIVLEKI" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=kelvin-kariuki-9644a5333" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=kelvin-kariuki-9644a5333 " target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
                         <a href="https://wa.me/254717328354?text=Hello%2C%20This%20is%20Kelvin%20Kariuki" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://instagram.com/karisnivlek" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
                         <a href="https://discord.com/users/1333756609125679144" target="_blank" class="social-icon"><i class="fab fa-discord"></i></a>
@@ -1171,7 +1082,6 @@
                 </div>
             </div>
         </div>
-        
     </section>
 
     <!-- Footer -->
