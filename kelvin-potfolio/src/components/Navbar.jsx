@@ -24,7 +24,7 @@ const Navbar = ({ toggleTheme, isDark }) => {
     <nav className={`navbar ${sticky ? 'sticky' : ''}`}>
       <div className="container nav-container">
         {/* Logo links to top (#home) */}
-        <a href="#home" className="logo">KELVIN<span>KARIUKI</span></a>
+        <a href="#home" className="logo">KELVIN <span>KARIUKI</span></a>
         
         {/* Hamburger Icon */}
         <div className="menu-icon" onClick={toggleMenu}>
