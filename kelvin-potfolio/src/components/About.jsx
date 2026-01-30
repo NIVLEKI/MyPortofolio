@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const [tab, setTab] = useState('education');
+  
+  // NEW: State to track if image failed to load
+  const [imageError, setImageError] = useState(false);
 
   const handleTab = (selectedTab) => {
     setTab(selectedTab);
@@ -21,19 +24,34 @@ const About = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          {/* Using a tech-themed placeholder or your image */}
-          <img 
-             src="/images/WALL 5_1.jpg" 
-             alt="About Kelvin"
-             onError={(e) => {
-               e.target.style.display = 'none';
-               e.target.nextSibling.style.display = 'flex';
-             }} 
-          />
-          {/* Fallback Icon if image fails */}
-          <div className="fallback-icon" style={{display: 'none', height: '300px', background: 'var(--bg-alt)', borderRadius: '15px', alignItems: 'center', justifyContent: 'center'}}>
-             <i className="fas fa-user-graduate" style={{fontSize: '80px', color: 'var(--accent-color)'}}></i>
-          </div>
+          {/* LOGIC: If NO error, show Image. If Error, show Fallback. */}
+          {!imageError ? (
+            <img 
+               src="/images/WALL 5_1.jpg" 
+               alt="About Kelvin"
+               onError={() => setImageError(true)} // If load fails, switch state to true
+               style={{ 
+                 width: '100%', 
+                 borderRadius: '15px', 
+                 boxShadow: 'var(--shadow)',
+                 border: '4px solid var(--bg-alt)'
+               }}
+            />
+          ) : (
+            /* Fallback Icon (Only shows if imageError is true) */
+            <div className="fallback-icon" style={{
+              height: '350px', 
+              width: '100%',
+              background: 'var(--bg-alt)', 
+              borderRadius: '15px', 
+              display: 'flex', // This is safe now because it's only rendered on error
+              alignItems: 'center', 
+              justifyContent: 'center',
+              border: '2px dashed var(--accent-color)'
+            }}>
+               <i className="fas fa-user-graduate" style={{fontSize: '80px', color: 'var(--accent-color)'}}></i>
+            </div>
+          )}
         </motion.div>
 
         {/* Right Side: Content & Tabs */}
@@ -49,7 +67,7 @@ const About = () => {
           </div>
           
           <p className="about-text">
-            I am a dedicated BSc. IT undergraduate at the University of Embu, passionate about bridging the gap between secure backend logic and intuitive frontend design. My journey involves deep dives into Mobile Security, Hybrid Encryption, and full-stack web development.
+            I am a dedicated BSc. IT undergraduate at the University of Embu and a Power Learn Project (PLP) graduate. My passion lies in bridging the gap between secure backend logic and intuitive frontend design. I focus on Mobile Security, Hybrid Encryption, and building scalable full-stack applications.
           </p>
 
           {/* Tabs Navigation */}
@@ -76,6 +94,8 @@ const About = () => {
 
           {/* Tab Content */}
           <div className="tab-content">
+            
+            {/* EDUCATION TAB */}
             {tab === 'education' && (
               <ul className="tab-list">
                 <li>
@@ -90,8 +110,25 @@ const About = () => {
               </ul>
             )}
 
+            {/* CERTIFICATIONS TAB */}
             {tab === 'certs' && (
               <ul className="tab-list">
+                {/* PLP Entry with Download Button */}
+                <li>
+                  <span>Full Stack Development</span>
+                  <strong>MERN Stack Specialization</strong>
+                  <small>Power Learn Project (PLP) • Graduated</small>
+                  
+                  <a 
+                    href="/plp-certificate.pdf" 
+                    download="Kelvin_PLP_Certificate.pdf"
+                    className="btn-sm"
+                    style={{marginTop: '10px'}}
+                  >
+                    <i className="fas fa-file-download"></i> View Certificate
+                  </a>
+                </li>
+
                 <li>
                   <span>Competency</span>
                   <strong>Cybersecurity Essentials</strong>
@@ -100,13 +137,10 @@ const About = () => {
                   <span>Development</span>
                   <strong>Android App Development</strong>
                 </li>
-                <li>
-                  <span>Frameworks</span>
-                  <strong>React & Django Fullstack</strong>
-                </li>
               </ul>
             )}
 
+            {/* GOALS TAB */}
             {tab === 'goals' && (
               <ul className="tab-list">
                 <li>

@@ -359,3 +359,30 @@ footer { background: var(--bg-dark); padding: 30px 0; text-align: center; color:
   .about-image { display: none; /* Optional: Hide image on small screens to save space */ }
   .about-tabs { justify-content: space-between; }
 }
+/* Add to src/App.css */
+
+.btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  width: fit-content;
+  transition: var(--transition);
+}
+
+.btn-sm:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-sm i {
+  font-size: 14px;
+}

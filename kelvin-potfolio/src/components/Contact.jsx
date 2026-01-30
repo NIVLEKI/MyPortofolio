@@ -25,7 +25,7 @@ const Contact = () => {
                     {/* Socials */}
                     <a href={personalInfo.whatsapp} target="_blank" rel="noreferrer" title="WhatsApp" style={{background: '#25D366'}}><i className="fab fa-whatsapp"></i></a>
                     <a href={personalInfo.instagram} target="_blank" rel="noreferrer" title="Instagram" style={{background: '#C13584'}}><i className="fab fa-instagram"></i></a>
-                    <a href={personalInfo.facebook} target="_blank" rel="noreferrer" title="Facebook" style={{background: '#1877F2'}}><i className="fab fa-facebook-f"></i></a>
+                    {/* <a href={personalInfo.facebook} target="_blank" rel="noreferrer" title="Facebook" style={{background: '#1877F2'}}><i className="fab fa-facebook-f"></i></a>*/}
                     <a href={personalInfo.discord} target="_blank" rel="noreferrer" title="Discord" style={{background: '#5865F2'}}><i className="fab fa-discord"></i></a>
                 </div>
             </div>
