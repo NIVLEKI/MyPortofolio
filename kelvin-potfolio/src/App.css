@@ -1,0 +1,361 @@
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--bg-color);
+  transition: all 0.3s ease;
+  padding: 15px 0;
+}
+
+/* Adds a shadow when scrolled */
+header.scrolled {
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+.logo span { color: var(--accent-color); }
+
+.header-controls { display: flex; align-items: center; gap: 20px; }
+
+.nav-links { display: flex; }
+.nav-links li { margin-left: 30px; }
+.nav-links a {
+  color: var(--primary-color);
+  font-weight: 500;
+  position: relative;
+}
+.nav-links a:hover { color: var(--accent-color); }
+
+/* Theme Toggle & Hamburger */
+.theme-toggle, .hamburger {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 20px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.hamburger { display: none; }
+
+/* Hero Section Styles */
+.hero {
+  padding-top: 150px;
+  padding-bottom: 80px;
+  background: var(--bg-alt);
+  min-height: 100vh; /* Make hero take full screen height */
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.hero-text { flex: 1; }
+.hero-text h1 { font-size: 48px; margin-bottom: 10px; color: var(--primary-color); }
+.hero-text p { font-size: 18px; color: var(--text-light); margin-bottom: 30px; }
+
+.hero-buttons { display: flex; gap: 15px; }
+
+.hero-image { flex: 1; display: flex; justify-content: center; }
+
+.profile-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--bg-color);
+  box-shadow: var(--shadow);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .hero-content { flex-direction: column-reverse; text-align: center; }
+  .hero-text { margin-top: 30px; }
+  .hero-buttons { justify-content: center; }
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: block; z-index: 1001; }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 75%;
+    height: 100vh;
+    background: var(--bg-color);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+  .nav-links.active { right: 0; }
+  .nav-links li { margin: 20px 0; }
+  
+  .hero-text h1 { font-size: 36px; }
+  .profile-image { width: 250px; height: 250px; }
+}
+/* --- Skills Section --- */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.skill-item {
+  background: var(--bg-color);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover { transform: translateY(-5px); }
+
+.skill-icon {
+  font-size: 40px;
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.skill-item h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.skill-bar {
+  height: 10px;
+  background: var(--border-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+/* --- Projects Section --- */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.project-card {
+  background: var(--bg-alt);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  height: 100%; /* Ensures equal height */
+  display: flex;
+  flex-direction: column;
+}
+
+.project-image {
+  height: 180px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 50px;
+}
+
+.project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+.project-content h3 { font-size: 22px; margin-bottom: 10px; color: var(--primary-color); }
+.project-content p { color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
+
+.project-tech { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+.project-tech span {
+  background: var(--bg-color);
+  color: var(--accent-color);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: 1px solid var(--border-color);
+  font-weight: 600;
+}
+
+.project-buttons { display: flex; gap: 10px; }
+.project-buttons .btn { flex: 1; padding: 10px 0; font-size: 14px; }
+
+/* --- Contact Section --- */
+.contact-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+}
+
+.contact-info h3 { font-size: 28px; margin-bottom: 20px; color: var(--primary-color); }
+.contact-info p { color: var(--text-light); margin-bottom: 20px; font-size: 18px; }
+
+/* --- Social Grid Fix --- */
+.social-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* General Styles for All Icons (GitHub, LinkedIn) */
+.social-links-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  
+  /* Background follows the theme (Black in Light Mode, White in Dark Mode) */
+  background: var(--primary-color); 
+  
+  /* THE FIX: The icon color must be the OPPOSITE of the background.
+     In Light Mode: Bg is Black, so Icon becomes White (bg-color variable).
+     In Dark Mode: Bg is White, so Icon becomes Dark (bg-color variable). */
+  color: var(--bg-color); 
+  
+  border-radius: 50%;
+  font-size: 20px;
+  transition: var(--transition);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Specific Styles for Colorful Icons (WhatsApp, IG, FB, Discord) 
+   These have specific background colors, so we ALWAYS want white icons on them. */
+.social-links-grid a[style*="background"] {
+  color: #ffffff !important; /* Force white icon regardless of theme */
+  border: none; /* Remove any border if it exists */
+}
+
+/* Hover Effect */
+.social-links-grid a:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  filter: brightness(1.1);
+}
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: 15px; margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: 2px solid var(--accent-color); border-color: transparent;
+}
+
+/* Footer */
+footer { background: var(--bg-dark); padding: 30px 0; text-align: center; color: #fff; margin-top: 50px; }
+.copyright { opacity: 0.7; font-size: 14px; }
+/* --- About Section --- */
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border: 4px solid var(--bg-alt);
+}
+
+.about-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--text-light);
+}
+
+/* Tabs Styling */
+.about-tabs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  cursor: pointer;
+  position: relative;
+  padding: 5px 0;
+  transition: var(--transition);
+}
+
+.tab-btn:hover { color: var(--primary-color); }
+
+.tab-btn.active {
+  color: var(--accent-color);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+/* Tab Content List */
+.tab-list { list-style: none; }
+.tab-list li {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-list span {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+
+.tab-list strong {
+  font-size: 18px;
+  color: var(--primary-color);
+}
+
+.tab-list small {
+  font-size: 14px;
+  color: var(--accent-color);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .about-container { grid-template-columns: 1fr; text-align: left; }
+  .about-image { display: none; /* Optional: Hide image on small screens to save space */ }
+  .about-tabs { justify-content: space-between; }
+}
