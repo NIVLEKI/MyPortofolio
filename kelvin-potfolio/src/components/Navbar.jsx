@@ -50,3 +50,4 @@ const Navbar = ({ toggleTheme, isDark }) => {
 };
 
 export default Navbar;
+
