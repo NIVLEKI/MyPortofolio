@@ -425,6 +425,83 @@ input:focus, textarea:focus {
   outline: none;
   border-color: var(--accent-color);
 }
+/* =========================================
+   10. TAB CONTENT STYLING (Certifications & Education)
+   ========================================= */
+
+/* The List Container */
+.tab-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+/* Individual List Items (The Cards) */
+.tab-list li {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-color); /* Adds a divider line */
+}
+
+/* Remove border from the last item */
+.tab-list li:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* The Label (e.g., "Full Stack Development") */
+.tab-list li span {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-color); /* Blue/Cyan color */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+/* The Main Title (e.g., "MERN Stack Specialization") */
+.tab-list li strong {
+  display: block;
+  font-size: 18px;
+  color: var(--text-color);
+  margin-bottom: 5px;
+}
+
+/* The Subtitle (e.g., "Power Learn Project...") */
+.tab-list li small {
+  display: block;
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 12px; /* Space before the button */
+  font-style: italic;
+}
+
+/* FIX: The Download Button */
+.tab-list .btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Space between icon and text */
+  padding: 8px 16px;
+  font-size: 13px;
+  background: transparent;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+}
+
+/* Button Hover Effect */
+.tab-list .btn-sm:hover {
+  background: var(--accent-color);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
 /* =========================================
    9. MOBILE RESPONSIVENESS
