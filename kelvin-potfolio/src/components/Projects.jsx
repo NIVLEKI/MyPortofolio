@@ -5,15 +5,15 @@ import { motion } from 'framer-motion';
 import { projects } from '../data';
 
 const defaultOptions = {
-	reverse: false,
-	max: 15,
-	perspective: 1000,
-	scale: 1.02,
-	speed: 1000,
-	transition: true,
-	axis: null,
-	reset: true,
-	easing: "cubic-bezier(.03,.98,.52,.99)",
+  reverse: false,
+  max: 15,
+  perspective: 1000,
+  scale: 1.02,
+  speed: 1000,
+  transition: true,
+  axis: null,
+  reset: true,
+  easing: "cubic-bezier(.03,.98,.52,.99)",
 }
 
 const Projects = () => {
@@ -24,7 +24,8 @@ const Projects = () => {
           <h2>My Projects</h2>
         </div>
         
-        <div className="projects-container">
+        {/* Changed class to match CSS Grid */}
+        <div className="projects-grid">
           {projects.map((project, index) => (
             <Tilt options={defaultOptions} key={index}>
               <motion.div 
@@ -34,27 +35,50 @@ const Projects = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="project-image">
+                
+                {/* Image Area - Using Gradient & Icon as placeholder */}
+                <div 
+                  className="project-img" 
+                  style={{
+                    height: '200px',
+                    background: 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    fontSize: '50px'
+                  }}
+                >
                   <i className={project.icon}></i>
                 </div>
-                <div className="project-content">
+
+                <div className="project-info">
                   <h3>{project.title}</h3>
                   <p>{project.desc}</p>
-                  <div className="project-tech">
+                  
+                  {/* Changed class to match CSS */}
+                  <div className="tech-stack">
                     {project.tech.map((tech, i) => (
                       <span key={i}>{tech}</span>
                     ))}
                   </div>
-                  <div className="project-buttons">
-                    {/* Always show GitHub */}
-                    <a href={project.github} className="btn" target="_blank" rel="noreferrer">GitHub</a>
+                  
+                  {/* Changed class to match CSS */}
+                  <div className="project-links">
+                    {/* GitHub Link */}
+                    <a href={project.github} target="_blank" rel="noreferrer">
+                      <i className="fab fa-github"></i>
+                    </a>
                     
-                    {/* ONLY show Live Demo if the link is not empty */}
+                    {/* Live Demo Link (Only if it exists) */}
                     {project.demo && (
-                       <a href={project.demo} className="btn btn-outline" target="_blank" rel="noreferrer">Live Demo</a>
+                       <a href={project.demo} target="_blank" rel="noreferrer">
+                         <i className="fas fa-external-link-alt"></i>
+                       </a>
                     )}
                   </div>
                 </div>
+
               </motion.div>
             </Tilt>
           ))}

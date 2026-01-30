@@ -1,15 +1,20 @@
 // src/components/About.jsx
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const About = () => {
   const [tab, setTab] = useState('education');
-  
-  // NEW: State to track if image failed to load
   const [imageError, setImageError] = useState(false);
 
   const handleTab = (selectedTab) => {
     setTab(selectedTab);
+  };
+
+  // Animation variants for tab content
+  const tabVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, y: -10, transition: { duration: 0.2 } }
   };
 
   return (
@@ -24,32 +29,18 @@ const About = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          {/* LOGIC: If NO error, show Image. If Error, show Fallback. */}
           {!imageError ? (
-            <img 
-               src="/images/about.jpg" 
-               alt="About Kelvin"
-               onError={() => setImageError(true)} // If load fails, switch state to true
-               style={{ 
-                 width: '100%', 
-                 borderRadius: '15px', 
-                 boxShadow: 'var(--shadow)',
-                 border: '4px solid var(--bg-alt)'
-               }}
-            />
+            <div className="img-wrapper">
+                <img 
+                src="/images/about.jpg" 
+                alt="About Kelvin"
+                onError={() => setImageError(true)}
+                />
+            </div>
           ) : (
-            /* Fallback Icon (Only shows if imageError is true) */
-            <div className="fallback-icon" style={{
-              height: '350px', 
-              width: '100%',
-              background: 'var(--bg-alt)', 
-              borderRadius: '15px', 
-              display: 'flex', // This is safe now because it's only rendered on error
-              alignItems: 'center', 
-              justifyContent: 'center',
-              border: '2px dashed var(--accent-color)'
-            }}>
-               <i className="fas fa-user-graduate" style={{fontSize: '80px', color: 'var(--accent-color)'}}></i>
+            /* Fallback Icon */
+            <div className="fallback-box">
+               <i className="fas fa-user-graduate"></i>
             </div>
           )}
         </motion.div>
@@ -62,7 +53,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="section-title" style={{textAlign: 'left', marginBottom: '20px'}}>
+          <div className="section-title left-align">
             <h2>About Me</h2>
           </div>
           
@@ -92,67 +83,85 @@ const About = () => {
             </button>
           </div>
 
-          {/* Tab Content */}
-          <div className="tab-content">
-            
-            {/* EDUCATION TAB */}
-            {tab === 'education' && (
-              <ul className="tab-list">
-                <li>
-                  <span>Currently Enrolled</span>
-                  <strong>BSc. Information Technology</strong>
-                  <small>University of Embu</small>
-                </li>
-                <li>
-                  <span>Focus Areas</span>
-                  <strong>Network Security & Mobile Dev</strong>
-                </li>
-              </ul>
-            )}
+          {/* Tab Content Area */}
+          <div className="tab-content-wrapper" style={{ minHeight: '180px' }}>
+            <AnimatePresence mode="wait">
+                
+                {/* EDUCATION TAB */}
+                {tab === 'education' && (
+                <motion.ul 
+                    key="education"
+                    className="tab-list"
+                    variants={tabVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                >
+                    <li>
+                        <span>Currently Enrolled</span>
+                        <strong>BSc. Information Technology</strong>
+                        <small>University of Embu</small>
+                    </li>
+                    <li>
+                        <span>Focus Areas</span>
+                        <strong>Network Security & Mobile Dev</strong>
+                    </li>
+                </motion.ul>
+                )}
 
-            {/* CERTIFICATIONS TAB */}
-            {tab === 'certs' && (
-              <ul className="tab-list">
-                {/* PLP Entry with Download Button */}
-                <li>
-                  <span>Full Stack Development</span>
-                  <strong>MERN Stack Specialization</strong>
-                  <small>Power Learn Project (PLP) • Graduated</small>
-                  
-                  <a 
-                    href="/plp-certificate.pdf" 
-                    download="Kelvin_PLP_Certificate.pdf"
-                    className="btn-sm"
-                    style={{marginTop: '10px'}}
-                  >
-                    <i className="fas fa-file-download"></i> View Certificate
-                  </a>
-                </li>
+                {/* CERTIFICATIONS TAB */}
+                {tab === 'certs' && (
+                <motion.ul 
+                    key="certs"
+                    className="tab-list"
+                    variants={tabVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                >
+                    <li>
+                        <span>Full Stack Development</span>
+                        <strong>MERN Stack Specialization</strong>
+                        <small>Power Learn Project (PLP) • Graduated</small>
+                        
+                        {/* Ensure 'plp-certificate.pdf' is in your public folder */}
+                        <a 
+                            href="/plp-certificate.pdf" 
+                            download="Kelvin_PLP_Certificate.pdf"
+                            className="btn-sm"
+                            style={{marginTop: '10px'}}
+                        >
+                            <i className="fas fa-file-download"></i> View Certificate
+                        </a>
+                    </li>
+                    <li>
+                        <span>Competency</span>
+                        <strong>Cybersecurity Essentials</strong>
+                    </li>
+                </motion.ul>
+                )}
 
-                <li>
-                  <span>Competency</span>
-                  <strong>Cybersecurity Essentials</strong>
-                </li>
-                <li>
-                  <span>Development</span>
-                  <strong>Android App Development</strong>
-                </li>
-              </ul>
-            )}
-
-            {/* GOALS TAB */}
-            {tab === 'goals' && (
-              <ul className="tab-list">
-                <li>
-                  <span>Research</span>
-                  <strong>Implementing Hybrid E2EE in Mobile Apps</strong>
-                </li>
-                <li>
-                  <span>Community</span>
-                  <strong>Building Open Source Security Tools</strong>
-                </li>
-              </ul>
-            )}
+                {/* GOALS TAB */}
+                {tab === 'goals' && (
+                <motion.ul 
+                    key="goals"
+                    className="tab-list"
+                    variants={tabVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                >
+                    <li>
+                        <span>Research</span>
+                        <strong>Implementing Hybrid E2EE in Mobile Apps</strong>
+                    </li>
+                    <li>
+                        <span>Community</span>
+                        <strong>Building Open Source Security Tools</strong>
+                    </li>
+                </motion.ul>
+                )}
+            </AnimatePresence>
           </div>
 
         </motion.div>
