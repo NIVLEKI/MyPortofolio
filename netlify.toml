@@ -1,0 +1,4 @@
+[build]
+  base = "YOUR_SUBFOLDER_NAME"
+  publish = "kelvin-potfolio/dist"
+  command = "npm run build"
