@@ -55,7 +55,7 @@ const Hero = () => {
         >
            {/* Replace 'me.jpg' with your actual image file name inside the public/images folder */}
            <img 
-             src="/images/WALL 5_1.jpg" 
+             src="/images/profile.jpg" 
              alt="Kelvin" 
              className="profile-image" 
              // Fallback if image not found

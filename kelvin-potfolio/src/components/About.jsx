@@ -27,7 +27,7 @@ const About = () => {
           {/* LOGIC: If NO error, show Image. If Error, show Fallback. */}
           {!imageError ? (
             <img 
-               src="/images/WALL 5_1.jpg" 
+               src="/images/about.jpg" 
                alt="About Kelvin"
                onError={() => setImageError(true)} // If load fails, switch state to true
                style={{ 
