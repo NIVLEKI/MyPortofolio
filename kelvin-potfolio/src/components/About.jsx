@@ -126,7 +126,7 @@ const About = () => {
                         
                         {/* Ensure 'plp-certificate.pdf' is in your public folder */}
                         <a 
-                            href="/plp-certificate.pdf" 
+                            href="/plpcertificate.pdf" 
                             download="Kelvin_PLP_Certificate.pdf"
                             className="btn-sm"
                             style={{marginTop: '10px'}}
