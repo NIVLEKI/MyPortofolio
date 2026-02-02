@@ -28,7 +28,7 @@ export const skills = [
 
 export const projects = [
   {
-    title: "NivlockX", // Renamed from Secure Mobile Vault
+    title: "Secure Mobile Vault (NivlockX)", // Renamed from Secure Mobile Vault
     desc: "A secure file storage and sharing application implementing Hybrid End-to-End Encryption (E2EE) using RSA/AES protocols for maximum data privacy.",
     icon: "fas fa-user-secret", 
     tech: ["Flutter", "Dart", "AES/RSA", "Android Studio"],
