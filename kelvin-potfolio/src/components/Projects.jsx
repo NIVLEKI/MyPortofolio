@@ -24,7 +24,6 @@ const Projects = () => {
           <h2>My Projects</h2>
         </div>
         
-        {/* Changed class to match CSS Grid */}
         <div className="projects-grid">
           {projects.map((project, index) => (
             <Tilt options={defaultOptions} key={index}>
@@ -36,7 +35,7 @@ const Projects = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 
-                {/* Image Area - Using Gradient & Icon as placeholder */}
+                {/* Image Area */}
                 <div 
                   className="project-img" 
                   style={{
@@ -56,24 +55,35 @@ const Projects = () => {
                   <h3>{project.title}</h3>
                   <p>{project.desc}</p>
                   
-                  {/* Changed class to match CSS */}
                   <div className="tech-stack">
                     {project.tech.map((tech, i) => (
                       <span key={i}>{tech}</span>
                     ))}
                   </div>
                   
-                  {/* Changed class to match CSS */}
                   <div className="project-links">
-                    {/* GitHub Link */}
-                    <a href={project.github} target="_blank" rel="noreferrer">
+                    {/* 1. GitHub Link */}
+                    <a href={project.github} target="_blank" rel="noreferrer" title="View Code">
                       <i className="fab fa-github"></i>
                     </a>
                     
-                    {/* Live Demo Link (Only if it exists) */}
+                    {/* 2. Live Demo Link (Web) */}
                     {project.demo && (
-                       <a href={project.demo} target="_blank" rel="noreferrer">
+                       <a href={project.demo} target="_blank" rel="noreferrer" title="Live Demo">
                          <i className="fas fa-external-link-alt"></i>
+                       </a>
+                    )}
+
+                    {/* 3. NEW: APK Download Button (Android) */}
+                    {/* This checks if 'apk' exists in data.js. If yes, it shows the button. */}
+                    {project.apk && (
+                       <a 
+                         href={project.apk} 
+                         download 
+                         title="Download APK"
+                         style={{ color: '#3ddc84' }} // Android Green color
+                       >
+                         <i className="fab fa-android"></i>
                        </a>
                     )}
                   </div>
