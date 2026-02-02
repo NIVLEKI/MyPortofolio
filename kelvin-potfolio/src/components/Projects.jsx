@@ -38,7 +38,7 @@ const Projects = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 
-                {/* 2. VENTURE BADGE: Shows "MY BUSINESS" label */}
+                {/* 2. VENTURE BADGE */}
                 {project.isVenture && (
                   <div style={{
                     position: 'absolute',
@@ -61,7 +61,6 @@ const Projects = () => {
                   className="project-img" 
                   style={{
                     height: '200px',
-                    // 3. BACKGROUND: Gold Gradient for Business, Blue/Purple for others
                     background: project.isVenture 
                       ? 'linear-gradient(135deg, #FFD700, #FDB931)' 
                       : 'linear-gradient(135deg, var(--primary-color), var(--secondary-color))',
@@ -85,46 +84,65 @@ const Projects = () => {
                     ))}
                   </div>
                   
-                  <div className="project-links" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  {/* LINKS CONTAINER - Added flexWrap to handle text buttons */}
+                  <div className="project-links" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '15px' }}>
                     
-                    {/* 4. LINK LOGIC: Toggle between Google Profile and GitHub */}
+                    {/* --- A. GOOGLE BUTTON (For Venture) --- */}
                     {project.isVenture ? (
-                       // GOOGLE BUSINESS LINK
-                       <a href={project.googleProfile} target="_blank" rel="noreferrer" title="View Google Profile" style={{ fontSize: '24px', color: '#DB4437' }}>
+                       <a 
+                         href={project.googleProfile} 
+                         target="_blank" 
+                         rel="noreferrer" 
+                         style={{ 
+                            display: 'flex', alignItems: 'center', gap: '6px',
+                            background: '#fff', 
+                            border: '1px solid #DB4437',
+                            color: '#DB4437', // Google Red
+                            padding: '6px 12px', borderRadius: '20px',
+                            fontSize: '13px', fontWeight: '600', textDecoration: 'none'
+                         }}
+                       >
                          <i className="fab fa-google"></i>
+                         <span>Google Reviews</span>
                        </a>
                     ) : (
-                       // GITHUB LINK
-                       <a href={project.github} target="_blank" rel="noreferrer" title="View Code" style={{ fontSize: '24px' }}>
+                       // --- B. GITHUB ICON (For Standard Projects) ---
+                       <a href={project.github} target="_blank" rel="noreferrer" title="View Code" style={{ fontSize: '24px', marginRight: '5px' }}>
                          <i className="fab fa-github"></i>
                        </a>
                     )}
                     
-                    {/* Live Website Link */}
+                    {/* --- C. VISIT WEBSITE BUTTON (For all projects with demo) --- */}
                     {project.demo && (
-                       <a href={project.demo} target="_blank" rel="noreferrer" title="Visit Website" style={{ fontSize: '20px' }}>
+                       <a 
+                         href={project.demo} 
+                         target="_blank" 
+                         rel="noreferrer" 
+                         style={{ 
+                            display: 'flex', alignItems: 'center', gap: '6px',
+                            background: '#007bff', // Standard Link Blue
+                            color: '#fff',
+                            padding: '6px 12px', borderRadius: '20px',
+                            fontSize: '13px', fontWeight: '600', textDecoration: 'none'
+                         }}
+                       >
                          <i className="fas fa-external-link-alt"></i>
+                         <span>Visit Site</span>
                        </a>
                     )}
 
-                    {/* 5. APK BUTTON: Only appears if 'apk' exists (NivlockX) */}
+                    {/* --- D. APK BUTTON (For NivlockX) --- */}
                     {project.apk && (
                        <a 
                          href={project.apk} 
                          download 
                          style={{ 
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '8px',
-                            background: '#3ddc84', 
+                            display: 'flex', alignItems: 'center', gap: '6px',
+                            background: '#3ddc84', // Android Green
                             color: '#fff',         
-                            padding: '6px 14px',
-                            borderRadius: '20px',
-                            fontSize: '13px',
-                            fontWeight: '600',
-                            textDecoration: 'none',
-                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-                            marginLeft: 'auto'
+                            padding: '6px 12px', borderRadius: '20px',
+                            fontSize: '13px', fontWeight: '600', textDecoration: 'none',
+                            marginLeft: 'auto' // Pushes to the right if space allows
                          }}
                        >
                          <i className="fab fa-android" style={{ fontSize: '16px' }}></i>
