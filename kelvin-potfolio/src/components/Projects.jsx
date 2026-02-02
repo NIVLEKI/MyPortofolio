@@ -61,29 +61,41 @@ const Projects = () => {
                     ))}
                   </div>
                   
-                  <div className="project-links">
+                  <div className="project-links" style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                     {/* 1. GitHub Link */}
-                    <a href={project.github} target="_blank" rel="noreferrer" title="View Code">
+                    <a href={project.github} target="_blank" rel="noreferrer" title="View Code" style={{ fontSize: '24px' }}>
                       <i className="fab fa-github"></i>
                     </a>
                     
-                    {/* 2. Live Demo Link (Web) */}
+                    {/* 2. Live Demo Link */}
                     {project.demo && (
-                       <a href={project.demo} target="_blank" rel="noreferrer" title="Live Demo">
+                       <a href={project.demo} target="_blank" rel="noreferrer" title="Live Demo" style={{ fontSize: '20px' }}>
                          <i className="fas fa-external-link-alt"></i>
                        </a>
                     )}
 
-                    {/* 3. NEW: APK Download Button (Android) */}
-                    {/* This checks if 'apk' exists in data.js. If yes, it shows the button. */}
+                    {/* 3. NEW: Highlighted APK Button */}
                     {project.apk && (
                        <a 
                          href={project.apk} 
                          download 
-                         title="Download APK"
-                         style={{ color: '#3ddc84' }} // Android Green color
+                         style={{ 
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '8px',
+                            background: '#3ddc84', // Android Green Background
+                            color: '#fff',         // White Text
+                            padding: '6px 14px',
+                            borderRadius: '20px',
+                            fontSize: '13px',
+                            fontWeight: '600',
+                            textDecoration: 'none',
+                            boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+                            marginLeft: 'auto'     // Pushes button to the right
+                         }}
                        >
-                         <i className="fab fa-android"> Download Apk Now</i>
+                         <i className="fab fa-android" style={{ fontSize: '16px' }}></i>
+                         <span>Download APK</span>
                        </a>
                     )}
                   </div>
