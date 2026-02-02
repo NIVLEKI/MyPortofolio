@@ -68,7 +68,7 @@ export const projects = [
     tech: ["Founder", "Web Design", "SEO", "Business"],
     
     // ⚠️ IMPORTANT: Paste your actual Google Maps Profile Link inside these quotes below
-    googleProfile: "https://www.google.com/maps", 
+    googleProfile: "https://share.google/tbdpFKl0bfrjFIGPE", 
     
     demo: "https://nivleksolutions.co.ke",
     isVenture: true // <--- This triggers the Gold Border & Google Icon
