@@ -28,12 +28,13 @@ export const skills = [
 
 export const projects = [
   {
-    title: "Secure Mobile Vault",
+    title: "NivlockX", // Renamed from Secure Mobile Vault
     desc: "A secure file storage and sharing application implementing Hybrid End-to-End Encryption (E2EE) using RSA/AES protocols for maximum data privacy.",
     icon: "fas fa-user-secret", 
     tech: ["Flutter", "Dart", "AES/RSA", "Android Studio"],
-    github: "https://github.com/NIVLEKI", // I added your GitHub base here, update if specific repo exists
-    demo: "" 
+    github: "https://github.com/NIVLEKI", 
+    demo: "", 
+    apk: "/NivlockX.apk" // <--- The APK Download Link
   },
   {
     title: "WaterSafe Platform",
