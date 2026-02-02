@@ -83,7 +83,7 @@ const Projects = () => {
                          title="Download APK"
                          style={{ color: '#3ddc84' }} // Android Green color
                        >
-                         <i className="fab fa-android"></i>
+                         <i className="fab fa-android"> Download Apk Now</i>
                        </a>
                     )}
                   </div>
