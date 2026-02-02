@@ -5,7 +5,7 @@ export const personalInfo = {
   surname: "Kariuki",
   role: "IT Student & Developer",
   bio: "BSc. IT undergraduate at the University of Embu. I build secure, scalable applications using Python, Java, and Modern Web Tech. Currently focused on Mobile Security, Data Visualization, and End-to-End Encryption.",
-  email: "your.email@example.com", // Update this if you have a real email
+  email: "nivlek.solutions@gmail.com", // I assumed your business email, change if needed
   
   // YOUR REAL SOCIAL LINKS
   github: "https://github.com/NIVLEKI",
@@ -28,13 +28,13 @@ export const skills = [
 
 export const projects = [
   {
-    title: "Secure Mobile Vault (NivlockX)", // Renamed from Secure Mobile Vault
+    title: "NivlockX",
     desc: "A secure file storage and sharing application implementing Hybrid End-to-End Encryption (E2EE) using RSA/AES protocols for maximum data privacy.",
     icon: "fas fa-user-secret", 
     tech: ["Flutter", "Dart", "AES/RSA", "Android Studio"],
     github: "https://github.com/NIVLEKI", 
     demo: "", 
-    apk: "/NivlockX.apk" // <--- The APK Download Link
+    apk: "/NivlockX.apk" // <--- Triggers the Green Android Button
   },
   {
     title: "WaterSafe Platform",
@@ -60,4 +60,17 @@ export const projects = [
     github: "https://github.com/NIVLEKI",
     demo: "" 
   },
+  // --- NEW: YOUR BUSINESS CARD ---
+  {
+    title: "Nivlek Solutions",
+    desc: "My official IT Consultancy brand. We provide professional Web Development, SEO, and Technical Support services. Rated 5-Stars on Google.",
+    icon: "fas fa-briefcase",
+    tech: ["Founder", "Web Design", "SEO", "Business"],
+    
+    // ⚠️ IMPORTANT: Paste your actual Google Maps Profile Link inside these quotes below
+    googleProfile: "https://www.google.com/maps", 
+    
+    demo: "https://nivleksolutions.co.ke",
+    isVenture: true // <--- This triggers the Gold Border & Google Icon
+  }
 ];
