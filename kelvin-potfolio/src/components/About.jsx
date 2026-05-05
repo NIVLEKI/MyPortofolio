@@ -2,169 +2,186 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const TABS = [
+  { key: 'education',   label: 'Education' },
+  { key: 'certs',       label: 'Certifications' },
+  { key: 'goals',       label: 'Goals' },
+];
+
+const tabContent = {
+  education: [
+    {
+      label: 'Currently Enrolled · 2022 – 2026',
+      title: 'BSc. Information Technology',
+      sub:   'University of Embu',
+      extra: 'Focus: Network Security, Mobile Development, DSA',
+    },
+    {
+      label: 'Google Developer Group',
+      title: 'GDG Member — University of Embu Chapter',
+      sub:   'Tech talks, workshops & cloud dev sessions',
+    },
+    {
+      label: 'KCSE · 2018 – 2021',
+      title: 'C+ — Gathera Secondary School',
+    },
+  ],
+  certs: [
+    {
+      label: 'Completed · 2025',
+      title: 'Full-Stack Web Development Certificate',
+      sub:   'Power Learn Project (PLP) — Python, JavaScript, SQL & modern web frameworks',
+      download: '/plpcertificate.pdf',
+      downloadLabel: 'View Certificate',
+    },
+    {
+      label: 'Competency',
+      title: 'Cybersecurity Essentials',
+      sub:   'End-to-End Encryption, Mobile Security & JWT Auth',
+    },
+  ],
+  goals: [
+    {
+      label: 'Research',
+      title: 'Hybrid E2EE in Mobile Applications',
+      sub:   'Advancing RSA/AES cryptographic architecture for mobile',
+    },
+    {
+      label: 'Community',
+      title: 'Open Source Security Tooling',
+      sub:   'Contributing developer tools to the security community',
+    },
+    {
+      label: 'Career',
+      title: 'Software Engineer — Cloud & Security',
+      sub:   'Building impactful, constitution-driven software at scale',
+    },
+  ],
+};
+
+const tabVariants = {
+  hidden:  { opacity: 0, y: 12 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.28, ease: 'easeOut' } },
+  exit:    { opacity: 0, y: -12, transition: { duration: 0.18 } },
+};
+
 const About = () => {
-  const [tab, setTab] = useState('education');
-  const [imageError, setImageError] = useState(false);
-
-  const handleTab = (selectedTab) => {
-    setTab(selectedTab);
-  };
-
-  // Animation variants for tab content
-  const tabVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
-    exit: { opacity: 0, y: -10, transition: { duration: 0.2 } }
-  };
+  const [tab, setTab]           = useState('education');
+  const [imgError, setImgError] = useState(false);
 
   return (
-    <section className="section" id="about">
-      <div className="container about-container">
-        
-        {/* Left Side: Image/Visual */}
-        <motion.div 
-          className="about-image"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          {!imageError ? (
-            <div className="img-wrapper">
-                <img 
-                src="/images/about.jpeg" 
-                alt="About Kelvin"
-                onError={() => setImageError(true)}
+    <section className="section about-section" id="about">
+      <div className="container">
+
+        {/* Section Header */}
+        <div className="section-header">
+          <p className="section-label">Get to know me</p>
+          <h2 className="section-title">About <span>Me</span></h2>
+        </div>
+
+        <div className="about-grid">
+
+          {/* ── LEFT: Image ── */}
+          <motion.div
+            className="about-image-wrap"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <div className="about-img-frame">
+              {!imgError ? (
+                <img
+                  src="/images/about.jpg"
+                  alt="Kelvin Kariuki"
+                  onError={() => setImgError(true)}
                 />
+              ) : (
+                <div className="about-img-fallback">
+                  <i className="fas fa-user-graduate" />
+                </div>
+              )}
             </div>
-          ) : (
-            /* Fallback Icon */
-            <div className="fallback-box">
-               <i className="fas fa-user-graduate"></i>
+
+            {/* Floating stat badge */}
+            <div className="about-img-badge">
+              <div className="badge-num">3+</div>
+              <div className="badge-text">Years of<br/>Building</div>
             </div>
-          )}
-        </motion.div>
+          </motion.div>
 
-        {/* Right Side: Content & Tabs */}
-        <motion.div 
-          className="about-content"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <div className="section-title left-align">
-            <h2>About Me</h2>
-          </div>
-          
-          <p className="about-text">
-            I am a dedicated BSc. IT undergraduate at the University of Embu and a Power Learn Project (PLP) graduate. My passion lies in bridging the gap between secure backend logic and intuitive frontend design. I focus on Mobile Security, Hybrid Encryption, and building scalable full-stack applications.
-          </p>
+          {/* ── RIGHT: Content ── */}
+          <motion.div
+            className="about-content"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="section-label" style={{ justifyContent: 'flex-start', marginBottom: 16 }}>
+              Nyeri, Kenya
+            </p>
+            <h2 className="section-title" style={{ textAlign: 'left', marginBottom: 16 }}>
+              Developer &<br /><span>Security Enthusiast</span>
+            </h2>
 
-          {/* Tabs Navigation */}
-          <div className="about-tabs">
-            <button 
-              className={`tab-btn ${tab === 'education' ? 'active' : ''}`} 
-              onClick={() => handleTab('education')}
-            >
-              Education
-            </button>
-            <button 
-              className={`tab-btn ${tab === 'certs' ? 'active' : ''}`} 
-              onClick={() => handleTab('certs')}
-            >
-              Certifications
-            </button>
-            <button 
-              className={`tab-btn ${tab === 'goals' ? 'active' : ''}`} 
-              onClick={() => handleTab('goals')}
-            >
-              Goals
-            </button>
-          </div>
+            <p className="about-intro">
+              I'm a dedicated BSc. IT undergraduate at the University of Embu and a Power Learn Project graduate. My passion is bridging the gap between secure backend logic and intuitive frontend design — managing every layer from database schema to cloud deployment.
+            </p>
 
-          {/* Tab Content Area */}
-          <div className="tab-content-wrapper" style={{ minHeight: '180px' }}>
-            <AnimatePresence mode="wait">
-                
-                {/* EDUCATION TAB */}
-                {tab === 'education' && (
-                <motion.ul 
-                    key="education"
-                    className="tab-list"
-                    variants={tabVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
+            <p className="about-intro" style={{ marginTop: '-8px' }}>
+              I run <strong>Nivlek Solutions</strong>, an IT consultancy providing web development and SEO to local clients, rated <strong style={{ color: 'var(--accent)' }}>5 stars on Google Reviews</strong>.
+            </p>
+
+            {/* Tabs Nav */}
+            <div className="about-tabs">
+              {TABS.map(({ key, label }) => (
+                <button
+                  key={key}
+                  className={`tab-btn ${tab === key ? 'active' : ''}`}
+                  onClick={() => setTab(key)}
                 >
-                    <li>
-                        <span>Currently Enrolled</span>
-                        <strong>BSc. Information Technology</strong>
-                        <small>University of Embu</small>
-                    </li>
-                    <li>
-                        <span>Focus Areas</span>
-                        <strong>Network Security & Mobile Dev</strong>
-                    </li>
-                </motion.ul>
-                )}
+                  {label}
+                </button>
+              ))}
+            </div>
 
-                {/* CERTIFICATIONS TAB */}
-                {tab === 'certs' && (
-                <motion.ul 
-                    key="certs"
-                    className="tab-list"
-                    variants={tabVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
+            {/* Tab Content */}
+            <div className="tab-content-area">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={tab}
+                  className="tab-card"
+                  variants={tabVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
                 >
-                    <li>
-                        <span>Full Stack Development</span>
-                        <strong>MERN Stack Specialization</strong>
-                        <small>Power Learn Project (PLP) • Graduated</small>
-                        
-                        {/* Ensure 'plp-certificate.pdf' is in your public folder */}
-                        <a 
-                            href="/plpcertificate.pdf" 
-                            download="Kelvin_PLP_Certificate.pdf"
-                            className="btn-sm"
-                            style={{marginTop: '10px'}}
+                  {tabContent[tab].map((item, i) => (
+                    <div className="tab-item" key={i}>
+                      <div className="tab-item-label">{item.label}</div>
+                      <div className="tab-item-title">{item.title}</div>
+                      {item.sub   && <div className="tab-item-sub">{item.sub}</div>}
+                      {item.extra && <div className="tab-item-sub">{item.extra}</div>}
+                      {item.download && (
+                        <a
+                          href={item.download}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn btn-outline"
+                          style={{ marginTop: 12 }}
                         >
-                            <i className="fas fa-file-download"></i> View Certificate
+                          <i className="fas fa-file-arrow-down" /> {item.downloadLabel}
                         </a>
-                    </li>
-                    <li>
-                        <span>Competency</span>
-                        <strong>Cybersecurity Essentials</strong>
-                    </li>
-                </motion.ul>
-                )}
+                      )}
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
-                {/* GOALS TAB */}
-                {tab === 'goals' && (
-                <motion.ul 
-                    key="goals"
-                    className="tab-list"
-                    variants={tabVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                >
-                    <li>
-                        <span>Research</span>
-                        <strong>Implementing Hybrid E2EE in Mobile Apps</strong>
-                    </li>
-                    <li>
-                        <span>Community</span>
-                        <strong>Building Open Source Security Tools</strong>
-                    </li>
-                </motion.ul>
-                )}
-            </AnimatePresence>
-          </div>
-
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

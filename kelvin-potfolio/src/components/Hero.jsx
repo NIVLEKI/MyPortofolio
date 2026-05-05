@@ -1,115 +1,158 @@
 // src/components/Hero.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data';
 
 const Hero = () => {
+  const [imgError, setImgError] = useState(false);
+
   return (
     <section id="home" className="hero-section">
+
+      {/* Animated background blobs */}
+      <div className="hero-blob hero-blob-1" />
+      <div className="hero-blob hero-blob-2" />
+
       <div className="container hero-container">
-        
-        {/* Left Side: Text Content */}
-        <motion.div 
+
+        {/* ── LEFT: Text ── */}
+        <motion.div
           className="hero-content"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          {/* Small Intro Tag */}
-          <h3 style={{ 
-            fontSize: '18px', 
-            color: 'var(--accent-color)', 
-            fontWeight: '600', 
-            marginBottom: '10px' 
-          }}>
-            Hello, I am
-          </h3>
+          {/* Status badge */}
+          <motion.div
+            className="hero-badge"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <span className="badge-dot" />
+            Available for opportunities
+          </motion.div>
 
-          <h1>
-            {personalInfo.name} <span style={{color: 'var(--accent-color)'}}>{personalInfo.surname}</span>
+          {/* Name */}
+          <h1 className="hero-name">
+            <span className="name-first">{personalInfo.name}</span>
+            <span className="name-last">{personalInfo.surname}</span>
           </h1>
-          
-          <h2 style={{ fontSize: '24px', margin: '15px 0', color: 'var(--text-light)', fontWeight: '500' }}>
-            I am a{' '}
-            <span style={{ color: 'var(--accent-color)', fontWeight: 'bold' }}>
+
+          {/* Typewriter */}
+          <p className="hero-typewriter">
+            I build{' '}
+            <span className="tw-accent">
               <Typewriter
-                words={['Developer.', 'IT Student.', 'Problem Solver.', 'Tech Enthusiast.']}
+                words={[
+                  'Full-Stack Applications.',
+                  'Secure Mobile Apps.',
+                  'Real-Time Systems.',
+                  'Cloud Infrastructure.',
+                  'E2EE Encryption.',
+                ]}
                 loop={0}
                 cursor
-                cursorStyle='_'
-                typeSpeed={70}
-                deleteSpeed={50}
-                delaySpeed={2000}
+                cursorStyle="_"
+                typeSpeed={65}
+                deleteSpeed={45}
+                delaySpeed={2200}
               />
             </span>
-          </h2>
-
-          <p style={{ maxWidth: '500px', margin: '0 0 30px 0' }}>
-            {personalInfo.bio}
           </p>
-          
-          <motion.div 
-            className="hero-buttons"
-            style={{ display: 'flex', gap: '15px' }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+
+          {/* Bio */}
+          <p className="hero-bio">{personalInfo.bio}</p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            className="hero-actions"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            <a href="#projects" className="btn">
-              View Work
+            <a href="#projects" className="btn btn-primary">
+              <i className="fas fa-code" /> View Projects
             </a>
-            
-            <a href="#contact" className="btn" style={{ 
-              background: 'transparent', 
-              border: '2px solid var(--accent-color)', 
-              color: 'var(--accent-color)' 
-            }}>
-              Contact Me
+            <a href="/Kelvin_Kariuki_CV.pdf" download className="btn btn-outline">
+              <i className="fas fa-download" /> Download CV
             </a>
+            <a href="#contact" className="btn btn-ghost">
+              <i className="fas fa-paper-plane" /> Contact Me
+            </a>
+          </motion.div>
+
+          {/* Stats */}
+          <motion.div
+            className="hero-stats"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+          >
+            <div className="hero-stat">
+              <span className="stat-num">3+</span>
+              <span className="stat-label">Production Apps</span>
+            </div>
+            <div className="hero-stat">
+              <span className="stat-num">5★</span>
+              <span className="stat-label">Google Rating</span>
+            </div>
+            <div className="hero-stat">
+              <span className="stat-num">2+</span>
+              <span className="stat-label">Years Building</span>
+            </div>
           </motion.div>
         </motion.div>
 
-        {/* Right Side: Image */}
-        <motion.div 
-          className="hero-img"
-          initial={{ opacity: 0, scale: 0.5 }}
+        {/* ── RIGHT: Image ── */}
+        <motion.div
+          className="hero-visual"
+          initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-           {/* IMPORTANT: Ensure 'profile.jpg' is inside 'public/images/' folder */}
-           <div className="img-wrapper">
-             <img 
-               src="/images/profile.jpg" 
-               alt="Kelvin Kariuki" 
-               onError={(e) => {
-                 // If image fails, hide it and log error
-                 e.target.style.display = 'none'; 
-                 console.error("Profile image not found. Check public/images/ folder.");
-               }}
-              />
-           </div>
+          <div className="hero-img-container">
+            <div className="hero-img-ring">
+              <div className="hero-img-ring-dot" />
+            </div>
+            <div className="hero-img-ring-2" />
+
+            <div className="hero-img-wrapper">
+              {!imgError ? (
+                <img
+                  src="/images/profile.jpg"
+                  alt="Kelvin Kariuki"
+                  onError={() => setImgError(true)}
+                />
+              ) : (
+                <div className="hero-img-fallback">
+                  <i className="fas fa-user-astronaut" />
+                  <span>Kelvin Kariuki</span>
+                </div>
+              )}
+            </div>
+
+            {/* Floating tech badges */}
+            <div className="hero-tech-badge">
+              <i className="fas fa-shield-halved" /> Security
+            </div>
+            <div className="hero-tech-badge">
+              <i className="fab fa-react" /> Full-Stack
+            </div>
+            <div className="hero-tech-badge">
+              <i className="fas fa-cloud" /> Cloud
+            </div>
+          </div>
         </motion.div>
 
       </div>
 
-      {/* Scroll Down Indicator */}
-      <motion.div 
-        className="scroll-down"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity, delay: 1 }}
-        style={{
-          position: 'absolute',
-          bottom: '30px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          color: 'var(--text-light)',
-          fontSize: '24px'
-        }}
-      >
-        <a href="#about" style={{ color: 'inherit' }}><i className="fas fa-chevron-down"></i></a>
-      </motion.div>
+      {/* Scroll indicator */}
+      <a href="#about" className="scroll-indicator">
+        <span>scroll</span>
+        <i className="fas fa-chevron-down scroll-chevron" />
+      </a>
     </section>
   );
 };

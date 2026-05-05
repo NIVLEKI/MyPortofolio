@@ -3,74 +3,146 @@
 export const personalInfo = {
   name: "Kelvin",
   surname: "Kariuki",
-  role: "IT Student & Developer",
-  bio: "BSc. IT undergraduate at the University of Embu. I build secure, scalable applications using Python, Java, and Modern Web Tech. Currently focused on Mobile Security, Data Visualization, and End-to-End Encryption.",
-  email: "nivlek.solutions@gmail.com", // I assumed your business email, change if needed
-  
-  // YOUR REAL SOCIAL LINKS
+  role: "Full-Stack Developer",
+  tagline: "Building Secure, Scalable Systems",
+  bio: "BSc. IT undergraduate at the University of Embu. I architect production-grade full-stack applications — from database schema to cloud deployment. Focused on Mobile Security, Hybrid E2EE, and real-time systems.",
+  email: "kelvinkk24816@gmail.com",
+  location: "Nyeri, Kenya",
+  phone: "+254 769 791 611",
   github: "https://github.com/NIVLEKI",
   linkedin: "https://linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=kelvin-kariuki-9644a5333",
   whatsapp: "https://wa.me/254717328354?text=Hello%2C%20This%20is%20Kelvin%20Kariuki",
   instagram: "https://instagram.com/Niv.l3k",
-  discord: "https://discord.com/users/1333756609125679144"
+  discord: "https://discord.com/users/1333756609125679144",
 };
 
+export const experience = [
+  {
+    role: "IT Attaché Intern",
+    company: "Chinga Tea Factory Ltd",
+    period: "May 2025 – Aug 2025",
+    type: "Internship",
+    icon: "fas fa-leaf",
+    color: "#22c55e",
+    points: [
+      "Operated the ERP system (SAP) supporting core business and internal data management workflows",
+      "Used POS scanners and field tools to process tea leaf deliveries from farmers",
+      "Processed farmer loan applications and disbursements via the GreenFedha platform",
+      "Issued insurance covers through the Majani Insurance system",
+      "Manned the customer care desk — resolving farmer queries and account issues",
+    ],
+  },
+];
+
 export const skills = [
-  { name: "Python", icon: "fab fa-python", level: "90%" },
-  { name: "Django", icon: "fas fa-layer-group", level: "85%" }, 
-  { name: "JavaScript", icon: "fab fa-js", level: "80%" },
-  { name: "Flutter/Dart", icon: "fab fa-google", level: "75%" },
-  { name: "Cybersecurity", icon: "fas fa-shield-alt", level: "70%" },
-  { name: "Java", icon: "fab fa-java", level: "80%" },
-  { name: "Data Viz", icon: "fas fa-chart-line", level: "75%" },
-  { name: "MySQL/SQL", icon: "fas fa-database", level: "80%" },
+  {
+    category: "Frontend",
+    icon: "fas fa-layer-group",
+    color: "#38bdf8",
+    items: ["React / Next.js", "JavaScript", "Tailwind CSS", "Flutter / Dart"],
+  },
+  {
+    category: "Backend",
+    icon: "fas fa-server",
+    color: "#818cf8",
+    items: ["Node.js / Express", "Python / Django", "REST APIs", "Socket.io"],
+  },
+  {
+    category: "Database & ORM",
+    icon: "fas fa-database",
+    color: "#2dd4bf",
+    items: ["PostgreSQL", "MySQL / SQL", "Prisma ORM", "Supabase"],
+  },
+  {
+    category: "Cloud & DevOps",
+    icon: "fas fa-cloud",
+    color: "#fb923c",
+    items: ["AWS EC2 / S3", "Nginx", "PM2", "Netlify / Docker"],
+  },
+  {
+    category: "Security",
+    icon: "fas fa-shield-halved",
+    color: "#f43f5e",
+    items: ["AES-256 / RSA-2048", "End-to-End Encryption", "JWT / bcrypt", "Mobile Security"],
+  },
+  {
+    category: "Mobile & Tools",
+    icon: "fas fa-mobile-screen",
+    color: "#a3e635",
+    items: ["Android Studio", "Java", "Git / GitHub", "Data Visualization"],
+  },
 ];
 
 export const projects = [
   {
+    title: "C2C Marketplace Platform",
+    subtitle: "Full-Stack Real-Time Web App",
+    desc: "A production-ready Consumer-to-Consumer marketplace with fully decoupled architecture. Users list items, browse a live feed, and negotiate via real-time private chat — without third-party apps.",
+    icon: "fas fa-store",
+    color: "#38bdf8",
+    tech: ["Next.js 15", "Node.js", "Socket.io", "PostgreSQL", "Prisma", "AWS EC2", "AWS S3", "Nginx", "PM2", "JWT"],
+    highlights: ["Real-time bidirectional WebSocket chat", "Live camera capture → AWS S3 upload", "PM2 zero-downtime deployment", "12+ REST endpoints"],
+    github: "https://github.com/NIVLEKI",
+    demo: "",
+    featured: true,
+  },
+  {
     title: "NivlockX",
-    desc: "A secure file storage and sharing application implementing Hybrid End-to-End Encryption (E2EE) using RSA/AES protocols for maximum data privacy.",
-    icon: "fas fa-user-secret", 
-    tech: ["Flutter", "Dart", "AES/RSA", "Android Studio"],
-    github: "https://github.com/NIVLEKI", 
-    demo: "", 
-    apk: "/NivlockX.apk" // <--- Triggers the Green Android Button
+    subtitle: "Hybrid E2EE Mobile File Storage",
+    desc: "An Android application implementing Hybrid End-to-End Encryption for secure file storage and peer-to-peer sharing. Combines AES-256 symmetric encryption with RSA-2048 key exchange — same architecture as Signal.",
+    icon: "fas fa-lock",
+    color: "#818cf8",
+    tech: ["Flutter", "Dart", "AES-256", "RSA-2048", "Android Studio"],
+    highlights: ["Zero server-side plaintext exposure", "On-device encryption before transmission", "RSA-2048 key exchange", "APK available for download"],
+    github: "https://github.com/NIVLEKI",
+    demo: "",
+    apk: "/NivlockX.apk",
+    featured: true,
+  },
+  {
+    title: "AQUAMY — Chama System",
+    subtitle: "Full-Stack Financial Platform",
+    desc: "Digitises the complete financial and administrative operations of a Kenyan community savings group (Chama). Constitution-driven design encodes fee amounts, loan policies, and role permissions directly into the app logic.",
+    icon: "fas fa-coins",
+    color: "#2dd4bf",
+    tech: ["Next.js 14", "TypeScript", "NextAuth.js", "Prisma", "PostgreSQL", "M-Pesa API", "Docker"],
+    highlights: ["17-model PostgreSQL schema", "9-role RBAC system", "M-Pesa Daraja STK Push integration", "Immutable AuditLog system"],
+    github: "https://github.com/NIVLEKI",
+    demo: "",
+    featured: true,
   },
   {
     title: "WaterSafe Platform",
+    subtitle: "Community Water Quality Monitor",
     desc: "A community-driven water quality monitoring system. Crowdsources real-time data on pH, turbidity, and chlorine levels with interactive Chart.js visualizations.",
-    icon: "fas fa-hand-holding-water", 
+    icon: "fas fa-droplet",
+    color: "#06b6d4",
     tech: ["Django", "Python", "Chart.js", "Bootstrap 5"],
+    highlights: ["Real-time pH & turbidity tracking", "Interactive Chart.js dashboards", "Community data crowdsourcing"],
     github: "https://github.com/NIVLEKI",
-    demo: "#" 
-  },
-  {
-    title: "Patient Management Sys.",
-    desc: "A comprehensive digital health record system. Features patient tracking, appointment scheduling, and medical history management with a secure Python backend.",
-    icon: "fas fa-hospital-user",
-    tech: ["JavaScript", "Python", "CSS"],
-    github: "https://github.com/NIVLEKI",
-    demo: "" 
+    demo: "#",
   },
   {
     title: "TenantFlex Housing",
-    desc: "A comprehensive housing management app for landlords and tenants featuring automated payment tracking and M-Pesa integration.",
+    subtitle: "Housing Management App",
+    desc: "A comprehensive housing management application for landlords and tenants featuring automated payment tracking and M-Pesa integration.",
     icon: "fas fa-building",
+    color: "#fb923c",
     tech: ["Java", "Firebase", "MySQL", "M-Pesa API"],
+    highlights: ["Automated payment tracking", "M-Pesa integration", "Landlord/tenant portals"],
     github: "https://github.com/NIVLEKI",
-    demo: "" 
+    demo: "",
   },
-  // --- NEW: YOUR BUSINESS CARD ---
   {
     title: "Nivlek Solutions",
-    desc: "My official IT Consultancy brand. We provide professional Web Development, SEO, and Technical Support services. Rated 5-Stars on Google.",
+    subtitle: "IT Consultancy & Web Services",
+    desc: "My official IT Consultancy brand. Professional Web Development, SEO, and Technical Support services. Consistently rated 5-Stars on Google Reviews.",
     icon: "fas fa-briefcase",
-    tech: ["Founder", "Web Design", "SEO", "Business"],
-    
-    // ⚠️ IMPORTANT: Paste your actual Google Maps Profile Link inside these quotes below
-    googleProfile: "https://share.google/tbdpFKl0bfrjFIGPE", 
-    
+    color: "#FFD700",
+    tech: ["Founder", "Web Design", "SEO", "IT Support"],
+    highlights: ["5-Star Google Reviews", "Local business clients", "Web Development & SEO"],
+    googleProfile: "https://share.google/tbdpFKl0bfrjFIGPE",
     demo: "https://nivleksolutions.co.ke",
-    isVenture: true // <--- This triggers the Gold Border & Google Icon
-  }
+    isVenture: true,
+  },
 ];
