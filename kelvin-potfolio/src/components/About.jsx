@@ -32,7 +32,7 @@ const About = () => {
           {!imageError ? (
             <div className="img-wrapper">
                 <img 
-                src="/images/about.jpg" 
+                src="/images/about.jpeg" 
                 alt="About Kelvin"
                 onError={() => setImageError(true)}
                 />
