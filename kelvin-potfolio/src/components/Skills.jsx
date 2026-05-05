@@ -1,61 +1,44 @@
-// src/components/Experience.jsx
+// src/components/Skills.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { experience } from '../data';
+import { skills } from '../data';
 
-const Experience = () => {
+const Skills = () => {
   return (
-    <section className="section experience-section" id="experience">
+    <section className="section skills-section" id="skills">
       <div className="container">
 
         <div className="section-header">
-          <p className="section-label">Work history</p>
-          <h2 className="section-title">My <span>Experience</span></h2>
+          <p className="section-label">Technical expertise</p>
+          <h2 className="section-title">My <span>Skills</span></h2>
           <p className="section-desc">
-            Hands-on industry exposure working with enterprise ERP systems, field data tools, and customer-facing platforms.
+            A full-stack toolkit — from frontend frameworks and mobile development to cloud infrastructure and cryptographic security.
           </p>
         </div>
 
-        <div className="experience-grid">
-          {experience.map((exp, index) => (
+        <div className="skills-grid">
+          {skills.map((category, index) => (
             <motion.div
               key={index}
-              className="exp-card"
-              initial={{ opacity: 0, y: 40 }}
+              className="skill-category-card"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="exp-header">
+              <div className="skill-cat-header">
                 <div
-                  className="exp-icon-wrap"
-                  style={{ background: `${exp.color}18`, color: exp.color }}
+                  className="skill-cat-icon"
+                  style={{ background: `${category.color}18`, color: category.color }}
                 >
-                  <i className={exp.icon} />
+                  <i className={category.icon} />
                 </div>
-
-                <div className="exp-meta">
-                  <div className="exp-role">{exp.role}</div>
-                  <div className="exp-company">{exp.company}</div>
-                  <div className="exp-badges">
-                    <span className="exp-badge type-badge">
-                      <i className="fas fa-circle" style={{ fontSize: 6, marginRight: 4 }} />
-                      {exp.type}
-                    </span>
-                    <span className="exp-badge">Nyeri, Kenya</span>
-                  </div>
-                </div>
-
-                <div className="exp-period">
-                  {exp.period.split('–').map((part, i) => (
-                    <span key={i} style={{ display: 'block' }}>{part.trim()}{i === 0 ? ' —' : ''}</span>
-                  ))}
-                </div>
+                <span className="skill-cat-name">{category.category}</span>
               </div>
 
-              <div className="exp-points">
-                {exp.points.map((point, i) => (
-                  <div className="exp-point" key={i}>{point}</div>
+              <div className="skill-tags">
+                {category.items.map((item, i) => (
+                  <span className="skill-tag" key={i}>{item}</span>
                 ))}
               </div>
             </motion.div>
@@ -67,4 +50,4 @@ const Experience = () => {
   );
 };
 
-export default Experience;
+export default Skills;

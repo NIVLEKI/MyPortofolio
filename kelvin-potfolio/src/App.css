@@ -448,9 +448,15 @@ body {
 
 .hero-actions {
   display: flex;
-  gap: 14px;
+  gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 40px;
+  align-items: center;
+}
+/* Buttons in hero must not overflow */
+.hero-actions .btn {
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .hero-stats {
@@ -483,22 +489,50 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  /* Enough padding so rings + floating badges don't clip */
+  padding: 40px;
 }
 
 .hero-img-container {
   position: relative;
-  width: 320px;
-  height: 320px;
+  /* The image itself is 280px; rings extend outward */
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
 }
 
+/* ── Spinning gradient ring (sits OUTSIDE the image) ── */
 .hero-img-ring {
   position: absolute;
-  inset: -12px;
+  /* 16px larger on each side = total 32px bigger than image */
+  top:    -16px;
+  left:   -16px;
+  right:  -16px;
+  bottom: -16px;
   border-radius: 50%;
-  border: 2px solid transparent;
-  background: linear-gradient(var(--bg), var(--bg)) padding-box,
-              linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent)) border-box;
-  animation: spinRing 8s linear infinite;
+  /* conic-gradient spins naturally without needing padding-box hack */
+  background: conic-gradient(
+    from 0deg,
+    var(--accent),
+    var(--accent-2),
+    transparent 60%,
+    var(--accent)
+  );
+  animation: spinRing 6s linear infinite;
+  /* Mask out the inner area so only the border line is visible */
+  -webkit-mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 3px),
+      #fff calc(100% - 3px)
+    );
+  mask:
+    radial-gradient(
+      farthest-side,
+      transparent calc(100% - 3px),
+      #fff calc(100% - 3px)
+    );
+  z-index: 0;
 }
 
 @keyframes spinRing {
@@ -506,41 +540,52 @@ body {
   to   { transform: rotate(360deg); }
 }
 
+/* ── Static outer dashed ring ── */
 .hero-img-ring-2 {
   position: absolute;
-  inset: -24px;
+  top:    -28px;
+  left:   -28px;
+  right:  -28px;
+  bottom: -28px;
   border-radius: 50%;
-  border: 1px solid var(--border);
-  animation: spinRing 12s linear infinite reverse;
+  border: 1px dashed var(--border-hl);
+  z-index: 0;
 }
 
+/* ── Glowing dot on the spinning ring ── */
 .hero-img-ring-dot {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   background: var(--accent);
   border-radius: 50%;
-  top: 0;
+  /* Sits at the top centre of the ring, offset to align with the ring edge */
+  top: -22px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 12px var(--accent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 14px 4px rgba(45, 212, 191, 0.55);
+  z-index: 3;
 }
 
+/* ── The actual photo circle ── */
 .hero-img-wrapper {
-  width: 320px;
-  height: 320px;
+  position: relative;
+  z-index: 2;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   overflow: hidden;
   background: var(--bg-card);
-  border: 3px solid var(--border);
-  position: relative;
-  z-index: 1;
+  /* Simple solid border — the conic ring outside provides the colour */
+  border: 4px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--border), var(--shadow-lg);
 }
 
 .hero-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top center;
   animation: floatImg 6s ease-in-out infinite;
 }
 
@@ -551,12 +596,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   background: linear-gradient(135deg, var(--bg-card), var(--bg-card-2));
 }
 
 .hero-img-fallback i {
-  font-size: 72px;
+  font-size: 80px;
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -570,14 +615,14 @@ body {
 
 @keyframes floatImg {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-10px); }
+  50%       { transform: translateY(-12px); }
 }
 
-/* Floating badges around image */
+/* ── Floating tech badges ── */
 .hero-tech-badge {
   position: absolute;
   background: var(--bg-card);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-hl);
   border-radius: 10px;
   padding: 8px 14px;
   font-size: 12px;
@@ -588,20 +633,23 @@ body {
   gap: 6px;
   box-shadow: var(--shadow);
   white-space: nowrap;
+  z-index: 4;
   animation: badgeFloat 4s ease-in-out infinite;
 }
 
 .hero-tech-badge i {
   color: var(--accent);
+  font-size: 13px;
 }
 
-.hero-tech-badge:nth-child(2) { top: 8%; right: -20%; animation-delay: -2s; }
-.hero-tech-badge:nth-child(3) { bottom: 15%; left: -20%; animation-delay: -1s; }
-.hero-tech-badge:nth-child(4) { bottom: 40%; right: -18%; animation-delay: -3s; }
+/* Position badges relative to .hero-visual (which has padding: 40px) */
+.hero-tech-badge:nth-child(2) { top: 0;   right: -8px;  animation-delay: -2s; }
+.hero-tech-badge:nth-child(3) { bottom: 10px; left: -8px;  animation-delay: -1s; }
+.hero-tech-badge:nth-child(4) { bottom: 38%; right: -12px; animation-delay: -3s; }
 
 @keyframes badgeFloat {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+  50%       { transform: translateY(-9px); }
 }
 
 /* Scroll indicator */
@@ -1541,155 +1589,322 @@ body {
 /* =========================================
    13. MOBILE RESPONSIVE
    ========================================= */
-@media (max-width: 900px) {
-  .hero-container,
-  .about-grid,
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
 
-  .hero-visual {
-    order: -1;
-  }
-
-  .hero-img-container {
-    width: 240px;
-    height: 240px;
-  }
-
-  .hero-img-wrapper {
-    width: 240px;
-    height: 240px;
-  }
-
-  .hero-tech-badge:nth-child(2) { right: -10px; top: 0; }
-  .hero-tech-badge:nth-child(3) { left: -10px; bottom: 0; }
-  .hero-tech-badge:nth-child(4) { display: none; }
-
-  .contact-grid {
-    gap: 0;
-  }
-
-  .contact-info-panel {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .contact-form-panel {
-    padding: 32px 24px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
+/* ── Overlay for mobile menu ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 998;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
+.nav-overlay.open { display: block; }
 
-@media (max-width: 768px) {
-  .section {
-    padding: 72px 0;
-  }
-
-  .menu-icon {
-    display: flex;
-  }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 280px;
-    height: 100vh;
-    background: var(--bg-alt);
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px;
-    transition: 0.35s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: -8px 0 24px rgba(0,0,0,0.3);
-    border-left: 1px solid var(--border);
-    gap: 8px;
-    z-index: 999;
-  }
-
-  .nav-links.open {
-    right: 0;
-  }
-
-  .nav-links a {
-    font-size: 18px;
-    font-family: 'Syne', sans-serif;
-    font-weight: 600;
-    padding: 12px 16px;
-    width: 100%;
-    text-align: left;
-  }
-
-  .theme-toggle {
-    margin-left: 0;
-    margin-top: 16px;
-  }
-
-  .hero-name {
-    font-size: clamp(36px, 10vw, 54px);
-  }
-
-  .hero-stats {
-    gap: 24px;
-  }
-
-  .about-img-badge {
-    bottom: -8px;
-    right: -8px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-/* Mobile right side controls */
+/* ── Mobile nav right controls (hamburger + theme) ── */
 .nav-right-mobile {
   display: none;
   align-items: center;
   gap: 8px;
 }
 
-@media (max-width: 768px) {
+/* ─────── TABLET: 600px – 1024px ─────── */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+  }
+  .hero-name {
+    font-size: clamp(36px, 5.5vw, 56px);
+  }
+}
+
+/* ─────── MEDIUM: ≤ 900px ─────── */
+@media (max-width: 900px) {
+  /* Stack hero: image top, text bottom */
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-visual {
+    order: -1; /* image goes ABOVE text */
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-bio {
+    max-width: 100%;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .hero-stats {
+    justify-content: center;
+    gap: 32px;
+  }
+
+  /* Smaller image on tablet */
+  .hero-img-container {
+    width: 220px;
+    height: 220px;
+  }
+  .hero-img-wrapper {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* Hide far floating badges that clip off screen */
+  .hero-tech-badge:nth-child(4) { display: none; }
+  .hero-tech-badge:nth-child(2) { right: -4px; top: 0;    }
+  .hero-tech-badge:nth-child(3) { left:  -4px; bottom: 4px; }
+
+  /* Stack about grid */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-image-wrap {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  /* Stack contact grid */
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-info-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 32px 28px;
+  }
+  .contact-form-panel {
+    padding: 32px 28px;
+  }
+
+  /* Full-width form row */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Single-column grids */
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  }
+
+  /* Experience */
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .exp-period {
+    text-align: left;
+  }
+}
+
+/* ─────── MOBILE: ≤ 640px ─────── */
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  /* ── Navbar ── */
   .nav-right-mobile {
+    display: flex;  /* show hamburger + theme toggle */
+  }
+  .menu-icon {
     display: flex;
   }
-
-  .nav-right-mobile .theme-toggle {
-    display: flex !important;
-    margin-left: 0;
+  /* Desktop nav links become a full-height side drawer */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -110%;           /* start off-screen */
+    width: min(300px, 85vw);
+    height: 100vh;
+    background: var(--bg-alt);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 48px 32px;
+    gap: 4px;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 32px rgba(0,0,0,0.4);
+    border-left: 1px solid var(--border);
+    z-index: 999;
+    /* Prevent items bleeding */
+    overflow-y: auto;
   }
-
-  /* Hide the desktop theme toggle inside nav-links on mobile */
-  .nav-links .theme-toggle {
-    margin-left: 0;
-    margin-top: 16px;
+  .nav-links.open {
+    right: 0;
+  }
+  .nav-links li {
     width: 100%;
   }
+  .nav-links a {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 8px;
+    width: 100%;
+    color: var(--text-dim);
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+    background: var(--glow);
+  }
+  /* Hide the theme toggle INSIDE the drawer (it's in the navbar bar instead) */
+  .nav-links .theme-toggle {
+    display: none;
+  }
+  .theme-toggle {
+    margin-left: 0;
+  }
+
+  /* ── Hero ── */
+  .hero-section {
+    padding: 100px 0 60px;
+  }
+  .hero-badge {
+    font-size: 12px;
+    padding: 5px 12px;
+  }
+  .hero-name {
+    font-size: clamp(32px, 9vw, 48px);
+  }
+  .hero-typewriter {
+    font-size: 15px;
+  }
+  .hero-bio {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Buttons: stack to 2-per-row on small phones */
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .hero-actions .btn {
+    flex: 1 1 140px;      /* each button fills at least 140px, wraps naturally */
+    max-width: 200px;
+    text-align: center;
+    justify-content: center;
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .hero-stats {
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-stat .stat-num {
+    font-size: 22px;
+  }
+
+  /* Smaller hero image on phones */
+  .hero-img-container {
+    width: 190px;
+    height: 190px;
+  }
+  .hero-img-wrapper {
+    width: 190px;
+    height: 190px;
+  }
+  /* Hide all floating badges on phones */
+  .hero-tech-badge {
+    display: none;
+  }
+
+  /* ── Section headers ── */
+  .section-title {
+    font-size: clamp(24px, 7vw, 34px);
+  }
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  /* ── About ── */
+  .about-img-badge {
+    bottom: -8px;
+    right: -4px;
+    padding: 12px 14px;
+  }
+  .about-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+  .tab-btn {
+    font-size: 13px;
+    padding: 7px 12px;
+    white-space: nowrap;
+  }
+
+  /* ── Experience ── */
+  .exp-card {
+    padding: 24px 20px;
+  }
+
+  /* ── Skills ── */
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ── Projects ── */
+  .projects-filter {
+    gap: 6px;
+  }
+  .filter-btn {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  /* ── Contact ── */
+  .contact-info-panel,
+  .contact-form-panel {
+    padding: 24px 20px;
+  }
+  .social-grid {
+    gap: 8px;
+  }
+
+  /* ── Footer ── */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
 }
 
-/* Overlay for mobile menu */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 998;
-  backdrop-filter: blur(4px);
-}
-
-.nav-overlay.open {
-  display: block;
+/* ─────── VERY SMALL: ≤ 380px ─────── */
+@media (max-width: 380px) {
+  .hero-name {
+    font-size: 30px;
+  }
+  .hero-actions .btn {
+    flex: 1 1 100%;  /* each button full width on tiny screens */
+    max-width: 100%;
+  }
+  .hero-img-container,
+  .hero-img-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+  .container {
+    padding: 0 16px;
+  }
 }

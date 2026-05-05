@@ -92,7 +92,7 @@ const About = () => {
             <div className="about-img-frame">
               {!imgError ? (
                 <img
-                  src="/images/about.jpg"
+                  src="/images/about.jpeg"
                   alt="Kelvin Kariuki"
                   onError={() => setImgError(true)}
                 />

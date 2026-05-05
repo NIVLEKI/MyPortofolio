@@ -108,16 +108,19 @@ const Hero = () => {
         {/* ── RIGHT: Image ── */}
         <motion.div
           className="hero-visual"
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
         >
           <div className="hero-img-container">
+            {/* Outer dashed ring */}
+            <div className="hero-img-ring-2" />
+            {/* Spinning gradient ring */}
             <div className="hero-img-ring">
               <div className="hero-img-ring-dot" />
             </div>
-            <div className="hero-img-ring-2" />
 
+            {/* Profile photo */}
             <div className="hero-img-wrapper">
               {!imgError ? (
                 <img
