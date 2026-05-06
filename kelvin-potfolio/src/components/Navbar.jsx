@@ -1,37 +1,39 @@
 // src/components/Navbar.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const NAV_LINKS = [
-  { href: '#home',       label: 'Home' },
-  { href: '#about',      label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#skills',     label: 'Skills' },
-  { href: '#projects',   label: 'Projects' },
-  { href: '#contact',    label: 'Contact' },
+  { href: '#home',       label: 'Home',       icon: 'fas fa-house' },
+  { href: '#about',      label: 'About',      icon: 'fas fa-user' },
+  { href: '#experience', label: 'Experience', icon: 'fas fa-briefcase' },
+  { href: '#skills',     label: 'Skills',     icon: 'fas fa-code' },
+  { href: '#projects',   label: 'Projects',   icon: 'fas fa-layer-group' },
+  { href: '#contact',    label: 'Contact',    icon: 'fas fa-paper-plane' },
 ];
 
 const Navbar = ({ toggleTheme, isDark }) => {
-  const [isOpen, setIsOpen]     = useState(false);
+  const [isOpen,   setIsOpen]   = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive]     = useState('#home');
+  const [active,   setActive]   = useState('#home');
+  const menuRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  // Close menu on escape key
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') setIsOpen(false); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    const fn = (e) => { if (e.key === 'Escape') setIsOpen(false); };
+    window.addEventListener('keydown', fn);
+    return () => window.removeEventListener('keydown', fn);
   }, []);
 
-  // Prevent body scroll when mobile menu open
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    const fn = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setIsOpen(false);
+    };
+    if (isOpen) document.addEventListener('mousedown', fn);
+    return () => document.removeEventListener('mousedown', fn);
   }, [isOpen]);
 
   const handleNavClick = (href) => {
@@ -41,22 +43,16 @@ const Navbar = ({ toggleTheme, isDark }) => {
 
   return (
     <>
-      {/* Dark overlay for mobile menu */}
-      <div
-        className={`nav-overlay ${isOpen ? 'open' : ''}`}
-        onClick={() => setIsOpen(false)}
-      />
-
+      {/* ════════════════════════════════
+          DESKTOP NAVBAR  (> 640px)
+          ════════════════════════════════ */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
-
-          {/* Logo */}
           <a href="#home" className="nav-logo" onClick={() => handleNavClick('#home')}>
             KELVIN<span>.</span><span style={{ color: 'var(--accent-2)' }}>dev</span>
           </a>
 
-          {/* Desktop Links */}
-          <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
+          <ul className="nav-links">
             {NAV_LINKS.map(({ href, label }) => (
               <li key={href}>
                 <a
@@ -69,35 +65,64 @@ const Navbar = ({ toggleTheme, isDark }) => {
               </li>
             ))}
             <li>
-              <button
-                className="theme-toggle"
-                onClick={toggleTheme}
-                aria-label="Toggle Theme"
-                title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-              >
-                <i className={isDark ? 'fas fa-sun' : 'fas fa-moon'}></i>
+              <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+                <i className={isDark ? 'fas fa-sun' : 'fas fa-moon'} />
               </button>
             </li>
           </ul>
-
-          {/* Mobile hamburger */}
-          <div className="nav-right-mobile">
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Theme"
-              style={{ display: 'none' }}
-            >
-              <i className={isDark ? 'fas fa-sun' : 'fas fa-moon'}></i>
-            </button>
-            <button
-              className="menu-icon"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle Menu"
-            >
-              <i className={isOpen ? 'fas fa-xmark' : 'fas fa-bars'}></i>
-            </button>
-          </div>
-
         </div>
       </nav>
+
+      {/* ════════════════════════════════
+          MOBILE FLOATING WIDGET (≤ 640px)
+          Small pill fixed top-right corner
+          ════════════════════════════════ */}
+      <div className="mob-float-widget" ref={menuRef}>
+
+        {/* Pill: theme + divider + hamburger */}
+        <div className={`mob-float-pill ${isOpen ? 'pill-open' : ''}`}>
+          <button
+            className="mob-float-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            <i className={isDark ? 'fas fa-sun' : 'fas fa-moon'} />
+          </button>
+
+          <div className="mob-float-divider" />
+
+          <button
+            className="mob-float-btn"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
+          >
+            <i className={isOpen ? 'fas fa-xmark' : 'fas fa-bars'} />
+          </button>
+        </div>
+
+        {/* Dropdown card */}
+        <div className={`mob-dropdown ${isOpen ? 'mob-dropdown-open' : ''}`}>
+          <div className="mob-dropdown-header">
+            KELVIN<span>.</span>dev
+          </div>
+          <ul className="mob-dropdown-links">
+            {NAV_LINKS.map(({ href, label, icon }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  className={active === href ? 'mob-link-active' : ''}
+                  onClick={() => handleNavClick(href)}
+                >
+                  <span className="mob-link-icon"><i className={icon} /></span>
+                  <span>{label}</span>
+                  {active === href && <span className="mob-link-dot" />}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
     </>
   );
 };

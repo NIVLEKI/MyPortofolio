@@ -148,8 +148,15 @@ const Contact = () => {
           <div className="contact-form-panel">
             <h4>Send a Message</h4>
 
-            <form onSubmit={handleSubmit}>
+            <form
+              onSubmit={handleSubmit}
+              name="contact"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              {/* Netlify required hidden fields */}
               <input type="hidden" name="form-name" value="contact" />
+              <input type="hidden" name="bot-field" />
 
               <div className="form-row">
                 <div className="form-field">
