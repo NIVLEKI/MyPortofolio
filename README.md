@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Portfolio Banner](public/images/profile.jpg)
+![Portfolio Banner](/images/profile.jpg)
 
 **A production-grade personal portfolio built with React + Vite**  
 Showcasing full-stack projects, mobile security work, and IT consultancy services.
@@ -14,28 +14,6 @@ Showcasing full-stack projects, mobile security work, and IT consultancy service
 
 </div>
 
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Live Demo](#live-demo)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Features](#features)
-- [Sections](#sections)
-- [Getting Started](#getting-started)
-- [Environment & Configuration](#environment--configuration)
-- [Netlify Forms Setup](#netlify-forms-setup)
-- [Adding Your Images & Documents](#adding-your-images--documents)
-- [Customisation Guide](#customisation-guide)
-- [Deployment to Netlify](#deployment-to-netlify)
-- [Dependencies](#dependencies)
-- [Known Issues & Fixes](#known-issues--fixes)
-- [Author](#author)
-
----
-
 ## Overview
 
 This is the personal portfolio website of **Kariuki Kelvin Wachira**, a BSc. Information Technology undergraduate at the University of Embu and Power Learn Project (PLP) graduate. The site showcases production-grade full-stack projects, mobile security work, professional experience, and the Nivlek Solutions IT consultancy brand.
@@ -46,7 +24,7 @@ The portfolio is built with a **"Elite Security Developer"** design aesthetic â€
 
 ## Live Demo
 
-> **[https://nivleksolutions.co.ke](https://nivleksolutions.co.ke)**
+> **[https://myportofolio-kelvin.netlify.app/](https://myportofolio-kelvin.netlify.app/)**
 
 ---
 
