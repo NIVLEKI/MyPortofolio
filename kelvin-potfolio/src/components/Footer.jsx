@@ -18,7 +18,7 @@ const Footer = () => {
           <i className="fab fa-react react-icon" title="React" />
           <span>React + Vite</span>
           <span style={{ color: 'var(--border)', margin: '0 4px' }}>·</span>
-          <span>Deployed on Netlify</span>
+          <span>Contact Me 0717328354.</span>
         </div>
 
       </div>

@@ -23,7 +23,7 @@ const tabContent = {
     },
     {
       label: 'KCSE · 2018 – 2021',
-      title: 'C+ — Gathera Secondary School',
+      title: 'Gathera Secondary School',
     },
   ],
   certs: [

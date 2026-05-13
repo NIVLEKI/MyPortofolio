@@ -99,7 +99,7 @@ const Hero = () => {
               <span className="stat-label">Google Rating</span>
             </div>
             <div className="hero-stat">
-              <span className="stat-num">2+</span>
+              <span className="stat-num">3+</span>
               <span className="stat-label">Years Building</span>
             </div>
           </motion.div>
