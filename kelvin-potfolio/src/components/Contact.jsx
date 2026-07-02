@@ -90,7 +90,7 @@ const Contact = () => {
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                 <a
-                  href="/Kelvin_Kariuki_CV.pdf"
+                  href="/Kelvin_Kariuki-resume.pdf"
                   download
                   className="proj-link-btn"
                   style={{ justifyContent: 'flex-start', gap: 10 }}

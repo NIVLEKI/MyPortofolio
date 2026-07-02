@@ -5,6 +5,9 @@ import { projects } from '../data';
 
 /* ─────────────── Project Detail Modal ─────────────── */
 const ProjectModal = ({ project, onClose }) => {
+  const [imgError, setImgError] = useState(false);
+  const hasImage = Boolean(project.image) && !imgError;
+
   // Lock body scroll
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -56,32 +59,50 @@ const ProjectModal = ({ project, onClose }) => {
           <div
             style={{
               height: 200,
-              background: project.isVenture
-                ? 'linear-gradient(135deg, #c9a800, #FFD700, #ffe566)'
-                : `linear-gradient(135deg, ${project.color}33, ${project.color}88)`,
+              background: hasImage
+                ? 'var(--bg-alt)'
+                : project.isVenture
+                  ? 'linear-gradient(135deg, #c9a800, #FFD700, #ffe566)'
+                  : `linear-gradient(135deg, ${project.color}33, ${project.color}88)`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               position: 'relative', borderRadius: '20px 20px 0 0',
               overflow: 'hidden',
             }}
           >
-            {/* Pattern overlay */}
-            <div style={{
-              position: 'absolute', inset: 0,
-              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
-              backgroundSize: '24px 24px',
-            }} />
-            <div style={{
-              width: 80, height: 80, borderRadius: 20,
-              background: 'rgba(255,255,255,0.15)',
-              backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255,255,255,0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 36,
-              color: project.isVenture ? '#000' : '#fff',
-              position: 'relative', zIndex: 1,
-            }}>
-              <i className={project.icon} />
-            </div>
+            {hasImage ? (
+              /* Project screenshot */
+              <img
+                src={project.image}
+                alt={project.title}
+                onError={() => setImgError(true)}
+                style={{
+                  position: 'absolute', inset: 0,
+                  width: '100%', height: '100%',
+                  objectFit: 'cover',
+                }}
+              />
+            ) : (
+              <>
+                {/* Pattern overlay */}
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)',
+                  backgroundSize: '24px 24px',
+                }} />
+                <div style={{
+                  width: 80, height: 80, borderRadius: 20,
+                  background: 'rgba(255,255,255,0.15)',
+                  backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(255,255,255,0.2)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 36,
+                  color: project.isVenture ? '#000' : '#fff',
+                  position: 'relative', zIndex: 1,
+                }}>
+                  <i className={project.icon} />
+                </div>
+              </>
+            )}
 
             {/* Close button */}
             <button
@@ -185,11 +206,11 @@ const ProjectModal = ({ project, onClose }) => {
                 <a href={project.googleProfile} target="_blank" rel="noreferrer" className="proj-link-btn google">
                   <i className="fab fa-google" /> Google Reviews
                 </a>
-              ) : (
+              ) : project.github ? (
                 <a href={project.github} target="_blank" rel="noreferrer" className="proj-link-btn">
                   <i className="fab fa-github" /> View Source Code
                 </a>
-              )}
+              ) : null}
               {project.demo && (
                 <a href={project.demo} target="_blank" rel="noreferrer" className="proj-link-btn primary">
                   <i className="fas fa-external-link-alt" /> Visit Live Site
@@ -210,6 +231,9 @@ const ProjectModal = ({ project, onClose }) => {
 
 /* ─────────────── Project Card ─────────────── */
 const ProjectCard = ({ project, index, onOpen }) => {
+  const [imgError, setImgError] = useState(false);
+  const hasImage = Boolean(project.image) && !imgError;
+
   return (
     <motion.div
       className={`project-card ${project.isVenture ? 'venture-card' : ''}`}
@@ -223,15 +247,32 @@ const ProjectCard = ({ project, index, onOpen }) => {
       <div
         className="project-card-top"
         style={{
-          background: project.isVenture
-            ? 'linear-gradient(135deg, #c9a800, #FFD700)'
-            : `linear-gradient(135deg, ${project.color}22, ${project.color}55)`,
+          background: hasImage
+            ? 'var(--bg-alt)'
+            : project.isVenture
+              ? 'linear-gradient(135deg, #c9a800, #FFD700)'
+              : `linear-gradient(135deg, ${project.color}22, ${project.color}55)`,
           borderBottom: `1px solid ${project.isVenture ? 'rgba(255,215,0,0.3)' : 'var(--border)'}`,
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="project-icon-wrap" style={{ background: `${project.color}30`, color: project.isVenture ? '#000' : project.color, border: `1px solid ${project.color}40` }}>
-          <i className={project.icon} />
-        </div>
+        {hasImage ? (
+          <img
+            src={project.image}
+            alt={project.title}
+            onError={() => setImgError(true)}
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+            }}
+          />
+        ) : (
+          <div className="project-icon-wrap" style={{ background: `${project.color}30`, color: project.isVenture ? '#000' : project.color, border: `1px solid ${project.color}40` }}>
+            <i className={project.icon} />
+          </div>
+        )}
 
         {project.featured && (
           <div className="project-badge badge-featured">★ Featured</div>
@@ -280,11 +321,11 @@ const ProjectCard = ({ project, index, onOpen }) => {
             <a href={project.googleProfile} target="_blank" rel="noreferrer" className="proj-link-btn google">
               <i className="fab fa-google" />
             </a>
-          ) : (
+          ) : project.github ? (
             <a href={project.github} target="_blank" rel="noreferrer" className="proj-link-btn">
               <i className="fab fa-github" />
             </a>
-          )}
+          ) : null}
 
           {project.demo && (
             <a href={project.demo} target="_blank" rel="noreferrer" className="proj-link-btn">
