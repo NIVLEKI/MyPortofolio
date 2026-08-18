@@ -23,7 +23,7 @@ const tabContent = {
     },
     {
       label: 'KCSE · 2018 – 2021',
-      title: 'Gathera Secondary School',
+      title: 'Gathera Seniour School',
     },
   ],
   certs: [
@@ -31,6 +31,8 @@ const tabContent = {
       label:  "BACHELOR'S DEGREE  · 2026",
       title:  'Bachelor of Science in Information Technology',
       sub:    'University of Embu',
+      download: '/sendrequest',
+      downloadLabel: 'Send Request',
     },
     {
       label: 'COMPLETED · 2025',
