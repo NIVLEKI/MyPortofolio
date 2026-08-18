@@ -28,9 +28,9 @@ const tabContent = {
   ],
   certs: [
     {
-      label:  'Completed . 2026',
-      title: 'Bachelor of Science in Information Technology',
-      sub: 'The University of Embu'
+      label: 'BACHELORS DEGREE . 2026',
+      title:  'Bachelor of Science in information Technology',
+      sub:    'University of Embu',
     },
     {
       label: 'Completed · 2025',
