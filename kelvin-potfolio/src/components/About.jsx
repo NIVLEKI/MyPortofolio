@@ -27,20 +27,16 @@ const tabContent = {
     },
   ],
   certs: [
+    
     {
-      label: 'BACHELORS DEGREE . 2026',
-      title:  'Bachelor of Science in information Technology',
-      sub:    'University of Embu',
-    },
-    {
-      label: 'Completed · 2025',
+      label: 'COMPLETED · 2025',
       title: 'Full-Stack Web Development Certificate',
       sub:   'Power Learn Project (PLP) — Python, JavaScript, SQL & modern web frameworks',
       download: '/plpcertificate.pdf',
       downloadLabel: 'View Certificate',
     },
     {
-      label: 'Competency',
+      label: 'COMPETENCY',
       title: 'Cybersecurity Essentials',
       sub:   'End-to-End Encryption, Mobile Security & JWT Auth',
     },
