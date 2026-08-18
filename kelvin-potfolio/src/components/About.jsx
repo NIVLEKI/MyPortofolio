@@ -27,9 +27,13 @@ const tabContent = {
     },
   ],
   certs: [
-    
     {
-      label: 'COMPLETED · 2025',
+      label:  "BACHELOR'S DEGREE  · 2026",
+      title:  'Bachelor of Science in Information Technology',
+      sub:    'University Of Embu',
+    },
+    {
+      label: 'Completed · 2025',
       title: 'Full-Stack Web Development Certificate',
       sub:   'Power Learn Project (PLP) — Python, JavaScript, SQL & modern web frameworks',
       download: '/plpcertificate.pdf',
