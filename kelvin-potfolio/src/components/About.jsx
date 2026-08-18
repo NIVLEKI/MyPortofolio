@@ -11,7 +11,7 @@ const TABS = [
 const tabContent = {
   education: [
     {
-      label: 'Currently Enrolled · 2022 – 2026',
+      label: 'Graduated · 2022 – 2026',
       title: 'BSc. Information Technology',
       sub:   'University of Embu',
       extra: 'Focus: Network Security, Mobile Development, DSA',
@@ -27,6 +27,11 @@ const tabContent = {
     },
   ],
   certs: [
+    {
+      label:  'Completed . 2026',
+      title: 'Bachelor of Science in Information Technology',
+      sub: 'The University of Embu'
+    },
     {
       label: 'Completed · 2025',
       title: 'Full-Stack Web Development Certificate',

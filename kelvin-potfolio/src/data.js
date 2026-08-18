@@ -5,7 +5,7 @@ export const personalInfo = {
   surname: "Kariuki",
   role: "Full-Stack Developer",
   tagline: "Building Secure, Scalable Systems",
-  bio: "BSc. IT undergraduate at the University of Embu. I architect production-grade full-stack applications — from database schema to cloud deployment. Focused on Mobile Security, Hybrid E2EE, Networking and real-time systems.",
+  bio: "BSc. IT graduate at the University of Embu. I architect production-grade full-stack applications — from database schema to cloud deployment. Focused on Mobile Security, Hybrid E2EE, Networking and real-time systems.",
   email: "kelvinkariuki.dev@gmail.com",
   location: "Nyeri, Kenya",
   phone: "+254 769 791 611",
