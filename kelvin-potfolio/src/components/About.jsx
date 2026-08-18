@@ -131,11 +131,11 @@ const About = () => {
             </h2>
 
             <p className="about-intro">
-              I'm a dedicated BSc. IT undergraduate at the University of Embu and a Power Learn Project graduate. My passion is bridging the gap between secure backend logic and intuitive frontend design — managing every layer from database schema to cloud deployment.
+              I'm a dedicated BSc. IT graduate at the University of Embu and a Power Learn Project graduate. My passion is bridging the gap between secure backend logic and intuitive frontend design — managing every layer from database schema to cloud deployment.
             </p>
 
             <p className="about-intro" style={{ marginTop: '-8px' }}>
-              I run <strong>Nivlek Solutions</strong>, an IT consultancy providing web development and SEO to local clients, rated <strong style={{ color: 'var(--accent)' }}>5 stars on Google Reviews</strong>.
+              I run <strong>Nivlek Solutions</strong>, an IT consultancy providing web development and SEO to local clients, transform complex problems into elegant, high-performance digital solutions designed to scale your business and outpace the competition. Rated <strong style={{ color: 'var(--accent)' }}>5 stars on Google Reviews</strong>.
             </p>
 
             {/* Tabs Nav */}
