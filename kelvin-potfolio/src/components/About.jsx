@@ -31,7 +31,7 @@ const tabContent = {
       label:  "BACHELOR'S DEGREE  · 2026",
       title:  'Bachelor of Science in Information Technology',
       sub:    'University of Embu',
-      download: '/sendrequest',
+      
       downloadLabel: 'Send Request To see certificate',
     },
     {
