@@ -39,45 +39,44 @@ export const skills = [
     category: "Frontend",
     icon: "fas fa-layer-group",
     color: "#38bdf8",
-    items: ["React / Next.js", "JavaScript", "Tailwind CSS", "Flutter / Dart"],
+    items: ["React / Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "Flutter / Dart"],
   },
   {
-    category: "Backend",
+    category: "Backend & APIs",
     icon: "fas fa-server",
     color: "#818cf8",
-    items: ["Node.js / Express", "Python / Django", "REST APIs", "Socket.io"],
+    items: ["Node.js / Express", "Python / Django", "REST APIs", "Socket.io", "Authentication"],
   },
   {
-    category: "Database & ORM",
+    category: "Databases & ORM",
     icon: "fas fa-database",
     color: "#2dd4bf",
-    items: ["PostgreSQL", "MySQL / SQL", "Prisma ORM", "Supabase"],
+    items: ["PostgreSQL", "MySQL / SQL", "MongoDB", "Prisma ORM", "Supabase"],
   },
   {
-    category: "Cloud & DevOps",
+    category: "Cloud, DevOps & Monitoring",
     icon: "fas fa-cloud",
     color: "#fb923c",
-    items: ["AWS EC2 / S3", "Nginx", "PM2", "Netlify / Docker"],
+    items: ["AWS (EC2 / S3)", "Nginx", "PM2", "Netlify / Docker", "Cloudinary", "Jira Service Management", "SAP Support Desk", "Nginx Log Analysis"],
   },
   {
     category: "Security",
     icon: "fas fa-shield-halved",
     color: "#f43f5e",
-    items: ["AES-256 / RSA-2048", "End-to-End Encryption", "JWT / bcrypt", "Mobile Security"],
+    items: ["AES-256 / RSA-2048", "End-to-End Encryption", "JWT / bcrypt", "Application Authentication", "Mobile Security"],
   },
   {
-    category: "Mobile & Tools",
+    category: "Mobile & Development Tools",
     icon: "fas fa-mobile-screen",
     color: "#a3e635",
-    items: ["Android Studio", "Java", "Git / GitHub", "Data Visualization"],
+    items: ["Android Studio", "Java", "Git / GitHub", "VS Code", "TypeScript", "Bash / Shell Scripting", "Data Visualization"],
   },
   {
     category: "Networking & Infrastructure",
-    icon: "fas fa-server",
-    color: "#38bdf8",
+    icon: "fas fa-network-wired",
+    color: "#c084fc",
     items: ["Router Configuration", "LAN/WAN Setup", "Network Security", "Firewall Configuration", "TCP/IP", "DNS", "DHCP", "Troubleshooting & Resolution"],
-  },
-  
+  }
 ];
 
 export const projects = [
