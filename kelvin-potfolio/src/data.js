@@ -77,18 +77,6 @@ export const skills = [
     color: "#38bdf8",
     items: ["Router Configuration", "LAN/WAN Setup", "Network Security", "Firewall Configuration", "TCP/IP", "DNS", "DHCP", "Troubleshooting & Resolution"],
   },
-  {
-    category: "",
-    icon: "",
-    color: "#2dd4bf",
-    items: "",
-  },
-  {
-    category: "",
-    icon: "",
-    color: "#fb923c",
-    items: "",
-  },
   
 ];
 
