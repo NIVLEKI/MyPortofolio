@@ -36,46 +36,58 @@ export const experience = [
 
 export const skills = [
   {
-    category: "Frontend",
+    category: "Programming & Languages",
+    icon: "fas fa-code",
+    color: "#6366f1",
+    items: ["Python", "JavaScript", "TypeScript", "Java", "Dart", "SQL", "Bash / Shell Scripting"]
+  },
+  {
+    category: "Frontend Web Development",
     icon: "fas fa-layer-group",
     color: "#38bdf8",
-    items: ["React / Next.js", "JavaScript", "TypeScript", "Tailwind CSS", "Flutter / Dart"],
+    items: ["React / Next.js", "Tailwind CSS", "Data Visualization"]
   },
   {
     category: "Backend & APIs",
-    icon: "fas fa-server",
+    icon: "fas fa-gears",
     color: "#818cf8",
-    items: ["Node.js / Express", "Python / Django", "REST APIs", "Socket.io", "Authentication"],
+    items: ["Node.js / Express", "Python / Django", "REST APIs", "Socket.io"]
   },
   {
-    category: "Databases & ORM",
+    category: "Databases & ORMs",
     icon: "fas fa-database",
     color: "#2dd4bf",
-    items: ["PostgreSQL", "MySQL / SQL", "MongoDB", "Prisma ORM", "Supabase"],
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Prisma ORM"]
   },
   {
-    category: "Cloud, DevOps & Monitoring",
-    icon: "fas fa-cloud",
-    color: "#fb923c",
-    items: ["AWS (EC2 / S3)", "Nginx", "PM2", "Netlify / Docker", "Cloudinary", "Jira Service Management", "SAP Support Desk", "Nginx Log Analysis"],
-  },
-  {
-    category: "Security",
-    icon: "fas fa-shield-halved",
-    color: "#f43f5e",
-    items: ["AES-256 / RSA-2048", "End-to-End Encryption", "JWT / bcrypt", "Application Authentication", "Mobile Security"],
-  },
-  {
-    category: "Mobile & Development Tools",
+    category: "Mobile Development",
     icon: "fas fa-mobile-screen",
     color: "#a3e635",
-    items: ["Android Studio", "Java", "Git / GitHub", "VS Code", "TypeScript", "Bash / Shell Scripting", "Data Visualization"],
+    items: ["Flutter", "Android Studio", "Java / Dart Mobile"]
+  },
+  {
+    category: "Cloud & Deployment",
+    icon: "fas fa-cloud",
+    color: "#fb923c",
+    items: ["AWS (EC2 / S3)", "Supabase", "Netlify", "Cloudinary", "Nginx", "PM2", "Docker"]
+  },
+  {
+    category: "Cybersecurity & Identity",
+    icon: "fas fa-shield-halved",
+    color: "#f43f5e",
+    items: ["Application Authentication", "JWT / bcrypt", "AES-256 / RSA-2048", "End-to-End Encryption", "Mobile Security"]
   },
   {
     category: "Networking & Infrastructure",
     icon: "fas fa-network-wired",
     color: "#c084fc",
-    items: ["Router Configuration", "LAN/WAN Setup", "Network Security", "Firewall Configuration", "TCP/IP", "DNS", "DHCP", "Troubleshooting & Resolution"],
+    items: ["Router Configuration", "LAN/WAN Setup", "Network Security", "Firewall Configuration", "TCP/IP", "DNS", "DHCP", "Troubleshooting & Resolution"]
+  },
+  {
+    category: "IT Operations & Tools",
+    icon: "fas fa-toolbox",
+    color: "#eab308",
+    items: ["Git / GitHub", "VS Code", "Jira Service Management", "SAP Support Desk", "Nginx Log Analysis"]
   }
 ];
 
