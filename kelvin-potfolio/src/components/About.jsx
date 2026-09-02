@@ -129,7 +129,7 @@ const About = () => {
               Nyeri, Kenya
             </p>
             <h2 className="section-title" style={{ textAlign: 'left', marginBottom: 16 }}>
-              Developer &<br /><span>Security Enthusiast</span>
+              Developer &<br /><span>IT Graduate</span>
             </h2>
 
             <p className="about-intro">
